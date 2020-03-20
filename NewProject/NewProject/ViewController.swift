@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+       print(isIntersect(view1: firstView, view2: secondView))
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -27,5 +29,10 @@ class ViewController: UIViewController {
         self.secondView.backgroundColor = UIColor(red: CGFloat.random(in: 0.01...1.0), green: CGFloat.random(in: 0.01...1.0), blue: CGFloat.random(in: 0.01...1.0), alpha: 1.0)
         self.thirdView.backgroundColor = UIColor(red: CGFloat.random(in: 0.01...1.0), green: CGFloat.random(in: 0.01...1.0), blue: CGFloat.random(in: 0.01...1.0), alpha: 1.0)
         }
+    }
+    
+    private func isIntersect(view1: UIView, view2: UIView) -> Bool {
+        
+        return view1.frame.intersects(view2.frame)
     }
 }
