@@ -15,34 +15,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nww-3D-ExS">
-                                <rect key="frame" x="64" y="78" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5lH-Qj-cKR">
-                                <rect key="frame" x="64" y="239" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9bl-Ui-pav">
-                                <rect key="frame" x="64" y="411" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="AKX-lx-EcB">
+                                <rect key="frame" x="0.0" y="0.0" width="414.00000000000023" height="896"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="AKX-lx-EcB" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="2et-uQ-Bme"/>
+                            <constraint firstAttribute="trailing" secondItem="AKX-lx-EcB" secondAttribute="trailing" id="G5r-FU-3hZ"/>
+                            <constraint firstItem="AKX-lx-EcB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="JQ3-TE-wMm"/>
+                            <constraint firstAttribute="bottom" secondItem="AKX-lx-EcB" secondAttribute="bottom" id="aPU-w0-DMe"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <connections>
-                        <outlet property="firstView" destination="Nww-3D-ExS" id="okP-ZO-Mu9"/>
-                        <outlet property="secondView" destination="5lH-Qj-cKR" id="Z65-zM-EaK"/>
-                        <outlet property="thirdView" destination="9bl-Ui-pav" id="UsH-jh-fFP"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="126"/>
+            <point key="canvasLocation" x="137.68115942028987" y="125.89285714285714"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="background" width="1183" height="2560"/>
+    </resources>
 </document>
