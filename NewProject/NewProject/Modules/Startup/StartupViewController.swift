@@ -8,7 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+// swiftlint:disable implicitly_unwrapped_optional
+
+class StartupViewController: UIViewController {
+
+    var presenter: StartupPresenter!
+
     @IBOutlet weak var showWeather: UIButton!
     @IBOutlet weak var aboutButton: UIButton!
     @IBOutlet weak var blurView: UIView!
@@ -19,6 +24,16 @@ class ViewController: UIViewController {
         showWeather.layer.cornerRadius = 20
         aboutButton.layer.cornerRadius = 20
 
+        createBlur()
+
+        presenter.viewDidLoad()
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+    }
+
+    func createBlur() {
         let blurEffect = UIBlurEffect(style: .regular)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = blurView.frame
@@ -26,7 +41,7 @@ class ViewController: UIViewController {
         blurView.addSubview(blurEffectView)
     }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    @IBAction private func didTapWeatherListButton(_ sender: UIButton) {
+        presenter.didTapWeatherListButton()
     }
 }
