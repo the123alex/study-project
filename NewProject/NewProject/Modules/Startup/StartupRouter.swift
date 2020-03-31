@@ -9,10 +9,10 @@
 import UIKit
 
  class StartupRouter {
-    private let naviagtionController: UINavigationController
+    private let navigationController: UINavigationController
 
     init(navigationController: UINavigationController) {
-        self.naviagtionController = navigationController
+        self.navigationController = navigationController
     }
 
     func showWeatherList () {

@@ -17,6 +17,8 @@
 		C76BCACB242F17BF00492952 /* StartupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76BCACA242F17BF00492952 /* StartupPresenter.swift */; };
 		C76BCACF242F1C0F00492952 /* StartupRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76BCACE242F1C0F00492952 /* StartupRouter.swift */; };
 		C76BCAD1242F23F800492952 /* StartupAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76BCAD0242F23F800492952 /* StartupAssembly.swift */; };
+		C76BCB2C24336FE900492952 /* StartupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76BCB2B24336FE900492952 /* StartupViewModel.swift */; };
+		C76BCB30243372D300492952 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76BCB2F243372D300492952 /* Strings.swift */; };
 		DE4ACB68FDF5C4380DD75EF4 /* Pods_NewProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA140C5BD65F4AB1BBE235C8 /* Pods_NewProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +60,8 @@
 		C76BCACA242F17BF00492952 /* StartupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupPresenter.swift; sourceTree = "<group>"; };
 		C76BCACE242F1C0F00492952 /* StartupRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupRouter.swift; sourceTree = "<group>"; };
 		C76BCAD0242F23F800492952 /* StartupAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupAssembly.swift; sourceTree = "<group>"; };
+		C76BCB2B24336FE900492952 /* StartupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupViewModel.swift; sourceTree = "<group>"; };
+		C76BCB2F243372D300492952 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		E83EDB2B93D683F9886801D8 /* Pods-NewProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewProject.release.xcconfig"; path = "Target Support Files/Pods-NewProject/Pods-NewProject.release.xcconfig"; sourceTree = "<group>"; };
 		FF1EF0A1908F2C5A19428595 /* Pods-NewProject-NewProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewProject-NewProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-NewProject-NewProjectUITests/Pods-NewProject-NewProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FFF7ECD6CECFC3564B727CAB /* Pods-NewProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewProjectTests.release.xcconfig"; path = "Target Support Files/Pods-NewProjectTests/Pods-NewProjectTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -139,6 +143,7 @@
 		C7243DD0241D39F500AE6B83 /* NewProject */ = {
 			isa = PBXGroup;
 			children = (
+				C76BCB2E243372BB00492952 /* Utils */,
 				C7243DD1241D39F500AE6B83 /* AppDelegate.swift */,
 				C7243DD7241D39F500AE6B83 /* Main.storyboard */,
 				C7243DDA241D39F600AE6B83 /* Assets.xcassets */,
@@ -169,8 +174,9 @@
 		C76BCAC7242F170D00492952 /* Startup */ = {
 			isa = PBXGroup;
 			children = (
-				C7243DD5241D39F500AE6B83 /* StartupViewController.swift */,
+				C76BCB2A24336CD000492952 /* ViewModels */,
 				C76BCACA242F17BF00492952 /* StartupPresenter.swift */,
+				C7243DD5241D39F500AE6B83 /* StartupViewController.swift */,
 				C76BCACE242F1C0F00492952 /* StartupRouter.swift */,
 				C76BCAD0242F23F800492952 /* StartupAssembly.swift */,
 			);
@@ -190,6 +196,22 @@
 			children = (
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		C76BCB2A24336CD000492952 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				C76BCB2B24336FE900492952 /* StartupViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		C76BCB2E243372BB00492952 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C76BCB2F243372D300492952 /* Strings.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -414,11 +436,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C76BCB2C24336FE900492952 /* StartupViewModel.swift in Sources */,
 				C76BCAD1242F23F800492952 /* StartupAssembly.swift in Sources */,
 				C76BCACB242F17BF00492952 /* StartupPresenter.swift in Sources */,
 				C7243DD6241D39F500AE6B83 /* StartupViewController.swift in Sources */,
 				C76BCACF242F1C0F00492952 /* StartupRouter.swift in Sources */,
 				C7243DD2241D39F500AE6B83 /* AppDelegate.swift in Sources */,
+				C76BCB30243372D300492952 /* Strings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
