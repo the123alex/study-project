@@ -16,5 +16,7 @@ import UIKit
     }
 
     func showWeatherList () {
+        let weatherListVC = WeatherListAssembly(navigationController: navigationController).create()
+        navigationController.pushViewController(weatherListVC, animated: true)
     }
  }

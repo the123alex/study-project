@@ -19,6 +19,10 @@
 		C76BCAD1242F23F800492952 /* StartupAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76BCAD0242F23F800492952 /* StartupAssembly.swift */; };
 		C76BCB2C24336FE900492952 /* StartupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76BCB2B24336FE900492952 /* StartupViewModel.swift */; };
 		C76BCB30243372D300492952 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76BCB2F243372D300492952 /* Strings.swift */; };
+		C79789EA2433E3A0006525F8 /* WeatherListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79789E62433E3A0006525F8 /* WeatherListPresenter.swift */; };
+		C79789EB2433E3A0006525F8 /* WeatherListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79789E72433E3A0006525F8 /* WeatherListRouter.swift */; };
+		C79789EC2433E3A0006525F8 /* WeatherListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79789E82433E3A0006525F8 /* WeatherListViewController.swift */; };
+		C79789ED2433E3A0006525F8 /* WeatherListAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79789E92433E3A0006525F8 /* WeatherListAssembly.swift */; };
 		DE4ACB68FDF5C4380DD75EF4 /* Pods_NewProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA140C5BD65F4AB1BBE235C8 /* Pods_NewProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +66,10 @@
 		C76BCAD0242F23F800492952 /* StartupAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupAssembly.swift; sourceTree = "<group>"; };
 		C76BCB2B24336FE900492952 /* StartupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupViewModel.swift; sourceTree = "<group>"; };
 		C76BCB2F243372D300492952 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		C79789E62433E3A0006525F8 /* WeatherListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListPresenter.swift; sourceTree = "<group>"; };
+		C79789E72433E3A0006525F8 /* WeatherListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListRouter.swift; sourceTree = "<group>"; };
+		C79789E82433E3A0006525F8 /* WeatherListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListViewController.swift; sourceTree = "<group>"; };
+		C79789E92433E3A0006525F8 /* WeatherListAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListAssembly.swift; sourceTree = "<group>"; };
 		E83EDB2B93D683F9886801D8 /* Pods-NewProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewProject.release.xcconfig"; path = "Target Support Files/Pods-NewProject/Pods-NewProject.release.xcconfig"; sourceTree = "<group>"; };
 		FF1EF0A1908F2C5A19428595 /* Pods-NewProject-NewProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewProject-NewProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-NewProject-NewProjectUITests/Pods-NewProject-NewProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FFF7ECD6CECFC3564B727CAB /* Pods-NewProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewProjectTests.release.xcconfig"; path = "Target Support Files/Pods-NewProjectTests/Pods-NewProjectTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -171,6 +179,17 @@
 			path = NewProjectUITests;
 			sourceTree = "<group>";
 		};
+		C73B0C632433CBC400B02E35 /* WeatherList */ = {
+			isa = PBXGroup;
+			children = (
+				C79789E62433E3A0006525F8 /* WeatherListPresenter.swift */,
+				C79789E72433E3A0006525F8 /* WeatherListRouter.swift */,
+				C79789E82433E3A0006525F8 /* WeatherListViewController.swift */,
+				C79789E92433E3A0006525F8 /* WeatherListAssembly.swift */,
+			);
+			path = WeatherList;
+			sourceTree = "<group>";
+		};
 		C76BCAC7242F170D00492952 /* Startup */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				C76BCAC7242F170D00492952 /* Startup */,
+				C73B0C632433CBC400B02E35 /* WeatherList */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -437,12 +457,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				C76BCB2C24336FE900492952 /* StartupViewModel.swift in Sources */,
+				C79789EA2433E3A0006525F8 /* WeatherListPresenter.swift in Sources */,
 				C76BCAD1242F23F800492952 /* StartupAssembly.swift in Sources */,
 				C76BCACB242F17BF00492952 /* StartupPresenter.swift in Sources */,
 				C7243DD6241D39F500AE6B83 /* StartupViewController.swift in Sources */,
+				C79789EC2433E3A0006525F8 /* WeatherListViewController.swift in Sources */,
+				C79789ED2433E3A0006525F8 /* WeatherListAssembly.swift in Sources */,
 				C76BCACF242F1C0F00492952 /* StartupRouter.swift in Sources */,
 				C7243DD2241D39F500AE6B83 /* AppDelegate.swift in Sources */,
 				C76BCB30243372D300492952 /* Strings.swift in Sources */,
+				C79789EB2433E3A0006525F8 /* WeatherListRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

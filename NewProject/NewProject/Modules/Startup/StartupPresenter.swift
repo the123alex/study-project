@@ -32,5 +32,6 @@ import Foundation
     }
 
     func didTapWeatherListButton() {
+        router.showWeatherList()
     }
  }
