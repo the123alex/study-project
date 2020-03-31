@@ -28,7 +28,7 @@ class StartupViewController: UIViewController {
 
         //createBlur()
 
-      //  presenter.viewDidLoad()
+       presenter.viewDidLoad()
     }
 
     override func viewDidLayoutSubviews() {
@@ -52,7 +52,7 @@ class StartupViewController: UIViewController {
 extension StartupViewController {
     func bindData(with viewModel: StartupViewModel) {
         titleLabel.text = viewModel.title
-        descriptionLabel.text = viewModel.title
+        descriptionLabel.text = viewModel.description
         showWeather.setTitle(viewModel.firstButtonTitle, for: .normal)
         aboutButton.setTitle(viewModel.secondButtonTitle, for: .normal)
     }

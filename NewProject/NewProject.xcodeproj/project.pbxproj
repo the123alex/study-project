@@ -143,12 +143,12 @@
 		C7243DD0241D39F500AE6B83 /* NewProject */ = {
 			isa = PBXGroup;
 			children = (
-				C76BCB2E243372BB00492952 /* Utils */,
 				C7243DD1241D39F500AE6B83 /* AppDelegate.swift */,
 				C7243DD7241D39F500AE6B83 /* Main.storyboard */,
 				C7243DDA241D39F600AE6B83 /* Assets.xcassets */,
 				C7243DDC241D39F600AE6B83 /* LaunchScreen.storyboard */,
 				C7243DDF241D39F600AE6B83 /* Info.plist */,
+				C76BCB2E243372BB00492952 /* Utils */,
 				C76BCAC9242F175B00492952 /* Common */,
 				C76BCAC8242F173200492952 /* Modules */,
 			);
