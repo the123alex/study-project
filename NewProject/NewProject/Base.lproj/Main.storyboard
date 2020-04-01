@@ -131,9 +131,24 @@
                     <view key="view" contentMode="scaleToFill" id="5i5-a3-sE6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NWL-S3-fkV">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="NWL-S3-fkV" secondAttribute="trailing" id="4ev-ZF-0h3"/>
+                            <constraint firstAttribute="bottom" secondItem="NWL-S3-fkV" secondAttribute="bottom" id="jJJ-tw-AZG"/>
+                            <constraint firstItem="NWL-S3-fkV" firstAttribute="top" secondItem="dZA-M7-geE" secondAttribute="top" id="jc8-YQ-LWK"/>
+                            <constraint firstItem="NWL-S3-fkV" firstAttribute="leading" secondItem="5i5-a3-sE6" secondAttribute="leading" id="xbP-hI-ffY"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="dZA-M7-geE"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="NWL-S3-fkV" id="2j0-dU-3oH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e4M-Ke-lmc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
