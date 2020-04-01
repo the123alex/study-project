@@ -50,8 +50,10 @@ extension WeatherListViewController: UITableViewDataSource {
         ) as? WeatherListCell else {
             fatalError("Wrong identifier")
         }
-        cell.temperatureLabel.text = "11"
-      //  cell.temperatureLabel.text = String(Int.random(in: 1...100))
+        cell.cityImage.image = UIImage(named: "city")
+        cell.temperatureToday.text = String(Int.random(in: 1...10))
+        cell.temperatureTommorow.text = String(Int.random(in: 11...20))
+        cell.temperatureAfterTommorow.text = String(Int.random(in: 21...100))
         return cell
     }
 }
