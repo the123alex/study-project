@@ -22,8 +22,17 @@ import Foundation
     }
 
     func viewDidLoad() {
+        let startupViewModel = StartupViewModel(
+            title: Strings.Startup.title,
+            description: Strings.Startup.description,
+            firstButtonTitle: Strings.Startup.firstButtonTitle,
+            secondButtonTitle: Strings.Startup.secondButonTitle)
+
+        view?.bindData(with: startupViewModel
+        )
     }
 
     func didTapWeatherListButton() {
+        router.showWeatherList()
     }
  }

@@ -14,6 +14,8 @@ class StartupViewController: UIViewController {
 
     var presenter: StartupPresenter!
 
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var showWeather: UIButton!
     @IBOutlet weak var aboutButton: UIButton!
     @IBOutlet weak var blurView: UIView!
@@ -24,9 +26,9 @@ class StartupViewController: UIViewController {
         showWeather.layer.cornerRadius = 20
         aboutButton.layer.cornerRadius = 20
 
-        createBlur()
+        //createBlur()
 
-        presenter.viewDidLoad()
+       presenter.viewDidLoad()
     }
 
     override func viewDidLayoutSubviews() {
@@ -43,5 +45,15 @@ class StartupViewController: UIViewController {
 
     @IBAction private func didTapWeatherListButton(_ sender: UIButton) {
         presenter.didTapWeatherListButton()
+    }
+}
+
+ //Data Binding
+extension StartupViewController {
+    func bindData(with viewModel: StartupViewModel) {
+        titleLabel.text = viewModel.title
+        descriptionLabel.text = viewModel.description
+        showWeather.setTitle(viewModel.firstButtonTitle, for: .normal)
+        aboutButton.setTitle(viewModel.secondButtonTitle, for: .normal)
     }
 }
