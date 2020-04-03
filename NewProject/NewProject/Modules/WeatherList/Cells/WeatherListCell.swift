@@ -9,7 +9,6 @@
 import UIKit
 
 class WeatherListCell: UITableViewCell {
-
     @IBOutlet weak var cityImage: UIImageView!
     @IBOutlet weak var temperatureToday: UILabel!
     @IBOutlet weak var temperatureTommorow: UILabel!

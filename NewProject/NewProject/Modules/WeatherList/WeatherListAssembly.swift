@@ -15,7 +15,7 @@ import UIKit
         self.navigationController = navigationController
     }
 
-    func  create() -> WeatherListViewController {
+    func create() -> WeatherListViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         guard let viewController = storyboard.instantiateViewController(
             identifier: String(describing: WeatherListViewController.self)

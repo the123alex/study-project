@@ -23,7 +23,4 @@ class WeatherListPresenter {
 
    func viewDidLoad() {
    }
-
-   func didTapWeatherListButton() {
-   }
 }

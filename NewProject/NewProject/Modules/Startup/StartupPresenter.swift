@@ -28,7 +28,8 @@ import Foundation
             firstButtonTitle: Strings.Startup.firstButtonTitle,
             secondButtonTitle: Strings.Startup.secondButonTitle)
 
-        view?.bindData(with: startupViewModel)
+        view?.bindData(with: startupViewModel
+        )
     }
 
     func didTapWeatherListButton() {
