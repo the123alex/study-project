@@ -52,6 +52,7 @@ class WeatherListCodeCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
+        makeConstraints()
     }
 
     @available(*, unavailable)
@@ -88,7 +89,7 @@ class WeatherListCodeCell: UITableViewCell {
         NSLayoutConstraint.activate([
             temperatureLabel.leadingAnchor.constraint(equalTo: dateLabel.trailingAnchor, constant: 5),
             temperatureLabel.centerYAnchor.constraint(equalTo: dateLabel.centerYAnchor),
-            temperatureLabel.trailingAnchor.constraint(greaterThanOrEqualTo: rainChanceDescriptionLabel.leadingAnchor, constant: 10)
+            temperatureLabel.trailingAnchor.constraint(greaterThanOrEqualTo: rainChanceDescriptionLabel.leadingAnchor, constant: -10)
         ])
 
         NSLayoutConstraint.activate([
@@ -100,7 +101,7 @@ class WeatherListCodeCell: UITableViewCell {
         NSLayoutConstraint.activate([
             wetValue.leadingAnchor.constraint(equalTo: wetDescriptionLabel.trailingAnchor, constant: 5),
             wetValue.centerYAnchor.constraint(equalTo: wetDescriptionLabel.centerYAnchor),
-            wetValue.trailingAnchor.constraint(greaterThanOrEqualTo: resultValueLabel.leadingAnchor, constant: 10)
+            wetValue.trailingAnchor.constraint(greaterThanOrEqualTo: resultValueLabel.leadingAnchor, constant: -10)
         ])
 
         NSLayoutConstraint.activate([
