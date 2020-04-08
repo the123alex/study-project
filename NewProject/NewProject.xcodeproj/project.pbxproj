@@ -14,6 +14,7 @@
 		C7243DD9241D39F500AE6B83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7243DD7241D39F500AE6B83 /* Main.storyboard */; };
 		C7243DDB241D39F600AE6B83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7243DDA241D39F600AE6B83 /* Assets.xcassets */; };
 		C7243DDE241D39F600AE6B83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7243DDC241D39F600AE6B83 /* LaunchScreen.storyboard */; };
+		C7679DD8243DC7C200138187 /* WeatherListHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7679DD7243DC7C200138187 /* WeatherListHeaderCell.swift */; };
 		C76BCACB242F17BF00492952 /* StartupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76BCACA242F17BF00492952 /* StartupPresenter.swift */; };
 		C76BCACF242F1C0F00492952 /* StartupRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76BCACE242F1C0F00492952 /* StartupRouter.swift */; };
 		C76BCAD1242F23F800492952 /* StartupAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76BCAD0242F23F800492952 /* StartupAssembly.swift */; };
@@ -64,6 +65,7 @@
 		C7243DEA241D39F600AE6B83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7243DEF241D39F600AE6B83 /* NewProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7243DF5241D39F600AE6B83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C7679DD7243DC7C200138187 /* WeatherListHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListHeaderCell.swift; sourceTree = "<group>"; };
 		C76BCACA242F17BF00492952 /* StartupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupPresenter.swift; sourceTree = "<group>"; };
 		C76BCACE242F1C0F00492952 /* StartupRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupRouter.swift; sourceTree = "<group>"; };
 		C76BCAD0242F23F800492952 /* StartupAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupAssembly.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				C7BC80832437E0E400D65BA3 /* WeatherListCodeCell.swift */,
+				C7679DD7243DC7C200138187 /* WeatherListHeaderCell.swift */,
 				C79789F02433E841006525F8 /* WeatherListCell.swift */,
 				C79789F12433E841006525F8 /* WeatherListCell.xib */,
 			);
@@ -263,6 +266,7 @@
 				C7243DCA241D39F500AE6B83 /* Sources */,
 				C7243DCB241D39F500AE6B83 /* Frameworks */,
 				C7243DCC241D39F500AE6B83 /* Resources */,
+				08A106C25C661EFD62630F16 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -300,6 +304,7 @@
 				C7243DEB241D39F600AE6B83 /* Sources */,
 				C7243DEC241D39F600AE6B83 /* Frameworks */,
 				C7243DED241D39F600AE6B83 /* Resources */,
+				1F75881AC1377D69FE79C70C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -383,6 +388,40 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		08A106C25C661EFD62630F16 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NewProject/Pods-NewProject-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NewProject/Pods-NewProject-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NewProject/Pods-NewProject-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1F75881AC1377D69FE79C70C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NewProject-NewProjectUITests/Pods-NewProject-NewProjectUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NewProject-NewProjectUITests/Pods-NewProject-NewProjectUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NewProject-NewProjectUITests/Pods-NewProject-NewProjectUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		329F62B0917A0153E2281A3C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -479,6 +518,7 @@
 				C76BCB2C24336FE900492952 /* StartupViewModel.swift in Sources */,
 				C79789EA2433E3A0006525F8 /* WeatherListPresenter.swift in Sources */,
 				C76BCAD1242F23F800492952 /* StartupAssembly.swift in Sources */,
+				C7679DD8243DC7C200138187 /* WeatherListHeaderCell.swift in Sources */,
 				C76BCACB242F17BF00492952 /* StartupPresenter.swift in Sources */,
 				C7243DD6241D39F500AE6B83 /* StartupViewController.swift in Sources */,
 				C79789EC2433E3A0006525F8 /* WeatherListViewController.swift in Sources */,
