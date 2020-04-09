@@ -88,22 +88,23 @@ class WeatherListCodeCell: UITableViewCell {
 
         wetStackView.addArrangedSubview(wetDescriptionLabel)
         wetStackView.addArrangedSubview(wetValueLabel)
+
+        selectionStyle = .none
     }
 
     private func makeConstraints() {
         dateLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(30)
+            make.leading.equalToSuperview().inset(15)
             make.centerY.equalTo(imageStackView.snp.centerY)
-           // make.trailing.equalTo(imageStackView.snp.leading).inset(10)
         }
 
         iconImageView.snp.makeConstraints { make in
-        make.width.height.equalTo(60)
+            make.width.height.equalTo(60)
         }
 
         imageStackView.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
-            make.leading.equalTo(dateLabel.snp.trailing).inset(-50)
+            make.leading.equalTo(dateLabel.snp.trailing).inset(-30)
         }
 
         wetStackView.snp.makeConstraints { make in

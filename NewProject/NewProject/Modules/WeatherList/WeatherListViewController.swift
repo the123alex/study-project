@@ -82,7 +82,7 @@ extension WeatherListViewController: UITableViewDataSource {
 
             cell.dateLabel.text = "Сегодня"
             cell.iconImageView.image = UIImage(named: "warm")
-            cell.temperatureValueLabel.text = "+ 23 \u{00B0}"
+            cell.temperatureValueLabel.text = "+ 23\u{00B0}"
             cell.weatherLabel.text = "Солнечно"
             cell.precipitationLabel.text = "Без осадков"
 

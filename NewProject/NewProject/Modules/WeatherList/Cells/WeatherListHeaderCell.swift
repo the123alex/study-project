@@ -87,6 +87,8 @@ private extension WeatherListHeaderCell {
         labelsStackView.addArrangedSubview(dateLabel)
         labelsStackView.addArrangedSubview(weatherLabel)
         labelsStackView.addArrangedSubview(precipitationLabel)
+
+        selectionStyle = .none
     }
 
     func makeConstraints() {
