@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,7 @@
 		C7243DDB241D39F600AE6B83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7243DDA241D39F600AE6B83 /* Assets.xcassets */; };
 		C7243DDE241D39F600AE6B83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7243DDC241D39F600AE6B83 /* LaunchScreen.storyboard */; };
 		C7679DD8243DC7C200138187 /* WeatherListHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7679DD7243DC7C200138187 /* WeatherListHeaderCell.swift */; };
+		C7679DDC243DD72100138187 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7679DDB243DD72100138187 /* UIView+Extensions.swift */; };
 		C76BCACB242F17BF00492952 /* StartupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76BCACA242F17BF00492952 /* StartupPresenter.swift */; };
 		C76BCACF242F1C0F00492952 /* StartupRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76BCACE242F1C0F00492952 /* StartupRouter.swift */; };
 		C76BCAD1242F23F800492952 /* StartupAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76BCAD0242F23F800492952 /* StartupAssembly.swift */; };
@@ -66,6 +67,7 @@
 		C7243DEF241D39F600AE6B83 /* NewProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7243DF5241D39F600AE6B83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7679DD7243DC7C200138187 /* WeatherListHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListHeaderCell.swift; sourceTree = "<group>"; };
+		C7679DDB243DD72100138187 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		C76BCACA242F17BF00492952 /* StartupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupPresenter.swift; sourceTree = "<group>"; };
 		C76BCACE242F1C0F00492952 /* StartupRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupRouter.swift; sourceTree = "<group>"; };
 		C76BCAD0242F23F800492952 /* StartupAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupAssembly.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 		C7243DD0241D39F500AE6B83 /* NewProject */ = {
 			isa = PBXGroup;
 			children = (
+				C7679DD9243DD6F400138187 /* Extensions */,
 				C7243DD1241D39F500AE6B83 /* AppDelegate.swift */,
 				C7243DD7241D39F500AE6B83 /* Main.storyboard */,
 				C7243DDA241D39F600AE6B83 /* Assets.xcassets */,
@@ -197,6 +200,22 @@
 				C79789E92433E3A0006525F8 /* WeatherListAssembly.swift */,
 			);
 			path = WeatherList;
+			sourceTree = "<group>";
+		};
+		C7679DD9243DD6F400138187 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C7679DDA243DD70100138187 /* UIKIt */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C7679DDA243DD70100138187 /* UIKIt */ = {
+			isa = PBXGroup;
+			children = (
+				C7679DDB243DD72100138187 /* UIView+Extensions.swift */,
+			);
+			path = UIKIt;
 			sourceTree = "<group>";
 		};
 		C76BCAC7242F170D00492952 /* Startup */ = {
@@ -525,6 +544,7 @@
 				C79789ED2433E3A0006525F8 /* WeatherListAssembly.swift in Sources */,
 				C76BCACF242F1C0F00492952 /* StartupRouter.swift in Sources */,
 				C7243DD2241D39F500AE6B83 /* AppDelegate.swift in Sources */,
+				C7679DDC243DD72100138187 /* UIView+Extensions.swift in Sources */,
 				C76BCB30243372D300492952 /* Strings.swift in Sources */,
 				C79789EB2433E3A0006525F8 /* WeatherListRouter.swift in Sources */,
 			);

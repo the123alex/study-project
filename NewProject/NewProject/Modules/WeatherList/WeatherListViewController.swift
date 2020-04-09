@@ -28,9 +28,14 @@ class WeatherListViewController: UIViewController {
     private func setupViews() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(
-            UINib(nibName: String(describing: WeatherListCell.self), bundle: Bundle.main),
-            forCellReuseIdentifier: String(describing: WeatherListCell.self)
+//        tableView.register(
+//            UINib(nibName: String(describing: WeatherListCell.self), bundle: Bundle.main),
+//            forCellReuseIdentifier: String(describing: WeatherListCell.self)
+//        )
+
+        tableView.register(WeatherListHeaderCell.self, forCellReuseIdentifier: String(describing: WeatherListHeaderCell.self)
+        )
+        tableView.register(WeatherListCodeCell.self, forCellReuseIdentifier: String(describing: WeatherListCodeCell.self)
         )
     }
 }
@@ -45,17 +50,43 @@ extension WeatherListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: String(describing: WeatherListCell.self),
+
+        let randomTemp = Int.random(in: -30...30)
+
+        if indexPath.row != 0 {
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: String(describing: WeatherListCodeCell.self),
             for: indexPath
-        ) as? WeatherListCell else {
-            fatalError("Wrong identifier")
-        }
-        cell.cityImage.image = UIImage(named: "city")
-        cell.temperatureToday.text = String(Int.random(in: 1...10))
-        cell.temperatureTommorow.text = String(Int.random(in: 11...20))
-        cell.temperatureAfterTommorow.text = String(Int.random(in: 21...100))
+            ) as? WeatherListCodeCell else {
+                fatalError("Wrong identifier")
+            }
+            cell.temperatureValueLabel.text = String(randomTemp) + "\u{00B0}"
+            cell.dateLabel.text = "08.04"
+            cell.wetDescriptionLabel.text = "Вероятность осадков"
+            cell.wetValueLabel.text = "50 %"
+            if randomTemp <= 0 {
+                cell.iconImageView.image = UIImage(named: "cold")
+            } else {
+                cell.iconImageView.image = UIImage(named: "warm")
+            }
+
         return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: String(describing: WeatherListHeaderCell.self),
+                for: indexPath
+                ) as? WeatherListHeaderCell else {
+                    fatalError("Wrong identifier")
+            }
+
+            cell.dateLabel.text = "Сегодня"
+            cell.iconImageView.image = UIImage(named: "warm")
+            cell.temperatureValueLabel.text = "+ 23 \u{00B0}"
+            cell.weatherLabel.text = "Солнечно"
+            cell.precipitationLabel.text = "Без осадков"
+
+            return cell
+        }
     }
 }
 
