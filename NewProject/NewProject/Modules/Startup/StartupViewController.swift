@@ -26,7 +26,9 @@ class StartupViewController: UIViewController {
         showWeather.layer.cornerRadius = 20
         aboutButton.layer.cornerRadius = 20
 
-       presenter.viewDidLoad()
+        presenter.viewDidLoad()
+
+        self.navigationItem.
     }
 
     override func viewDidLayoutSubviews() {
