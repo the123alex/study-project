@@ -27,8 +27,6 @@ class StartupViewController: UIViewController {
         aboutButton.layer.cornerRadius = 20
 
         presenter.viewDidLoad()
-
-        self.navigationItem.
     }
 
     override func viewDidLayoutSubviews() {
