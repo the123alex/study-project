@@ -52,6 +52,7 @@ extension WeatherListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let randomTemp = Int.random(in: -30...30)
+        let randomWet = Int.random(in: 0...100)
 
         if indexPath.row != 0 {
         guard let cell = tableView.dequeueReusableCell(
@@ -63,7 +64,7 @@ extension WeatherListViewController: UITableViewDataSource {
             cell.temperatureValueLabel.text = String(randomTemp) + "\u{00B0}"
             cell.dateLabel.text = "08.04"
             cell.wetDescriptionLabel.text = "Вероятность осадков"
-            cell.wetValueLabel.text = "50 %"
+            cell.wetValueLabel.text = String(randomWet) + "%"
             if randomTemp <= 0 {
                 cell.iconImageView.image = UIImage(named: "cold")
             } else {
