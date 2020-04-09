@@ -26,21 +26,11 @@ class StartupViewController: UIViewController {
         showWeather.layer.cornerRadius = 20
         aboutButton.layer.cornerRadius = 20
 
-        //createBlur()
-
        presenter.viewDidLoad()
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-    }
-
-    func createBlur() {
-        let blurEffect = UIBlurEffect(style: .regular)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = blurView.frame
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        blurView.addSubview(blurEffectView)
     }
 
     @IBAction private func didTapWeatherListButton(_ sender: UIButton) {
