@@ -28,14 +28,14 @@ class WeatherListViewController: UIViewController {
     private func setupViews() {
         tableView.delegate = self
         tableView.dataSource = self
-//        tableView.register(
-//            UINib(nibName: String(describing: WeatherListCell.self), bundle: Bundle.main),
-//            forCellReuseIdentifier: String(describing: WeatherListCell.self)
-//        )
 
-        tableView.register(WeatherListHeaderCell.self, forCellReuseIdentifier: String(describing: WeatherListHeaderCell.self)
+        tableView.register(
+            WeatherListHeaderCell.self,
+            forCellReuseIdentifier: String(describing: WeatherListHeaderCell.self)
         )
-        tableView.register(WeatherListCodeCell.self, forCellReuseIdentifier: String(describing: WeatherListCodeCell.self)
+        tableView.register(
+            WeatherListCodeCell.self,
+            forCellReuseIdentifier: String(describing: WeatherListCodeCell.self)
         )
     }
 }
@@ -55,9 +55,9 @@ extension WeatherListViewController: UITableViewDataSource {
         let randomWet = Int.random(in: 0...100)
 
         if indexPath.row != 0 {
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: String(describing: WeatherListCodeCell.self),
-            for: indexPath
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: String(describing: WeatherListCodeCell.self),
+                for: indexPath
             ) as? WeatherListCodeCell else {
                 fatalError("Wrong identifier")
             }

@@ -83,7 +83,7 @@ class WeatherListCodeCell: UITableViewCell {
             dateLabel,
             imageStackView,
             wetStackView
-            )
+        )
 
         imageStackView.addArrangedSubview(iconImageView)
         imageStackView.addArrangedSubview(temperatureValueLabel)
