@@ -32,7 +32,6 @@ class WeatherListHeaderCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 30, weight: .black)
         label.textColor = .darkGray
-
         return label
     }()
 
@@ -88,13 +87,14 @@ private extension WeatherListHeaderCell {
         labelsStackView.addArrangedSubview(weatherLabel)
         labelsStackView.addArrangedSubview(precipitationLabel)
 
+        backgroundColor = .white
         selectionStyle = .none
     }
 
     func makeConstraints() {
         imageTempStackView.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
-            make.leading.equalToSuperview().inset(60)
+            make.leading.equalToSuperview().inset(10)
         }
 
         iconImageView.snp.makeConstraints { make in
@@ -104,6 +104,7 @@ private extension WeatherListHeaderCell {
         labelsStackView.snp.makeConstraints { make in
             make.leading.equalTo(imageTempStackView.snp.trailing).inset(-50)
             make.centerY.equalTo(imageTempStackView.snp.centerY)
+            make.trailing.equalToSuperview().inset(10)
         }
     }
 }

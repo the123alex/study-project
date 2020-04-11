@@ -21,6 +21,8 @@ class WeatherListCodeCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         label.textColor = .black
+        label.numberOfLines = 0
+        label.textAlignment = .center
         return label
     }()
     let iconImageView = UIImageView()
@@ -88,7 +90,7 @@ class WeatherListCodeCell: UITableViewCell {
 
         wetStackView.addArrangedSubview(wetDescriptionLabel)
         wetStackView.addArrangedSubview(wetValueLabel)
-
+        backgroundColor = .white
         selectionStyle = .none
     }
 
@@ -110,6 +112,7 @@ class WeatherListCodeCell: UITableViewCell {
         wetStackView.snp.makeConstraints { make in
             make.leading.equalTo(imageStackView.snp.trailing).inset(-50)
             make.centerY.equalTo(imageStackView.snp.centerY)
+            make.trailing.equalToSuperview().inset(10)
         }
     }
 }
