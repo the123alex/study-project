@@ -1,9 +1,9 @@
 //
-//  UITableView+Extensions.swift
-//  Supercheck
+//  WeatherListHeaderCellModel.swift
+//  NewProject
 //
-//  Created by Ilya Glazunov on 4/2/19.
-//  Copyright © 2019 Ilya Glazunov. All rights reserved.
+//  Created by Aleksey on 15.04.2020.
+//  Copyright © 2020 Aleksey Mikhlev. All rights reserved.
 //
 
 import UIKit

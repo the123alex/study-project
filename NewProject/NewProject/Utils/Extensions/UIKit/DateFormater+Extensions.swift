@@ -1,9 +1,9 @@
 //
-//  DateFormater+Extensions.swift
-//  Swift-Tutorial
+//  WeatherListHeaderCellModel.swift
+//  NewProject
 //
-//  Created by Ilya Glazunov on 09.04.2020.
-//  Copyright © 2020 Ilya Glazunov. All rights reserved.
+//  Created by Aleksey on 15.04.2020.
+//  Copyright © 2020 Aleksey Mikhlev. All rights reserved.
 //
 
 import Foundation

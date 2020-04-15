@@ -33,6 +33,7 @@
 		C7BB0C0624471D73007B6EDB /* WeatherListHeaderCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BB0C0524471D73007B6EDB /* WeatherListHeaderCellModel.swift */; };
 		C7BB0C0924473CFF007B6EDB /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BB0C0824473CFF007B6EDB /* Weather.swift */; };
 		C7BB0C0B244754C4007B6EDB /* Date+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BB0C0A244754C4007B6EDB /* Date+String.swift */; };
+		C7BB0C0D244776D7007B6EDB /* WeatherListCodeCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BB0C0C244776D7007B6EDB /* WeatherListCodeCellModel.swift */; };
 		C7BC80842437E0E400D65BA3 /* WeatherListCodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BC80832437E0E400D65BA3 /* WeatherListCodeCell.swift */; };
 		DE4ACB68FDF5C4380DD75EF4 /* Pods_NewProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA140C5BD65F4AB1BBE235C8 /* Pods_NewProject.framework */; };
 /* End PBXBuildFile section */
@@ -91,6 +92,7 @@
 		C7BB0C0524471D73007B6EDB /* WeatherListHeaderCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListHeaderCellModel.swift; sourceTree = "<group>"; };
 		C7BB0C0824473CFF007B6EDB /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		C7BB0C0A244754C4007B6EDB /* Date+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+String.swift"; sourceTree = "<group>"; };
+		C7BB0C0C244776D7007B6EDB /* WeatherListCodeCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListCodeCellModel.swift; sourceTree = "<group>"; };
 		C7BC80832437E0E400D65BA3 /* WeatherListCodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListCodeCell.swift; sourceTree = "<group>"; };
 		E83EDB2B93D683F9886801D8 /* Pods-NewProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewProject.release.xcconfig"; path = "Target Support Files/Pods-NewProject/Pods-NewProject.release.xcconfig"; sourceTree = "<group>"; };
 		FF1EF0A1908F2C5A19428595 /* Pods-NewProject-NewProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewProject-NewProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-NewProject-NewProjectUITests/Pods-NewProject-NewProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 			isa = PBXGroup;
 			children = (
 				C7BB0C0524471D73007B6EDB /* WeatherListHeaderCellModel.swift */,
+				C7BB0C0C244776D7007B6EDB /* WeatherListCodeCellModel.swift */,
 			);
 			path = ModelCells;
 			sourceTree = "<group>";
@@ -591,6 +594,7 @@
 				C7BB0C0B244754C4007B6EDB /* Date+String.swift in Sources */,
 				C7243DD2241D39F500AE6B83 /* AppDelegate.swift in Sources */,
 				C7BB0C03244719F9007B6EDB /* UITableView+Extensions.swift in Sources */,
+				C7BB0C0D244776D7007B6EDB /* WeatherListCodeCellModel.swift in Sources */,
 				C76BCB30243372D300492952 /* Strings.swift in Sources */,
 				C79789EB2433E3A0006525F8 /* WeatherListRouter.swift in Sources */,
 				C7BB0C0624471D73007B6EDB /* WeatherListHeaderCellModel.swift in Sources */,
