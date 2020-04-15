@@ -16,4 +16,10 @@ extension DateFormatter {
 
         return dayMonthFormatter
     }()
+    static var dayMonthFormatterNext: DateFormatter = {
+        let dayMonthFormatter = DateFormatter()
+        dayMonthFormatter.locale = Locale(identifier: "ru_RU")
+        dayMonthFormatter.dateFormat = "dd.MM"
+        return dayMonthFormatter
+    }()
 }

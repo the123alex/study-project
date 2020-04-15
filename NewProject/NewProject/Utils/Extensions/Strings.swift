@@ -27,5 +27,7 @@ enum Strings {
         static let willRain = "Будут осадки"
         static let maybeRain = "Возможно будут осадки"
         static let notRain = "Не будет осадков"
+
+        static let precititation = "Вероятность осадков"
     }
 }

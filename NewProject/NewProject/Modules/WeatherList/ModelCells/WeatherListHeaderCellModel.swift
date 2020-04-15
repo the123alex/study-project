@@ -11,10 +11,9 @@ import UIKit
 struct WeatherListHeaderCellModel: PTableViewCellModel {
     let weatherImage: UIImage
     let dateText: String
-    var temperatureValueText: String
+    let temperatureValueText: String
     let weatherDescriptionText: String
     let precipitationText: String
-    //let defaultImage = UIImage(named: "default")
 
     init(weather: Weather) {
         switch weather.temperature {
@@ -30,8 +29,8 @@ struct WeatherListHeaderCellModel: PTableViewCellModel {
             weatherImage = #imageLiteral(resourceName: "lessCold")
             weatherDescriptionText = Strings.WeatherList.lessCold
             precipitationText = Strings.WeatherList.willRain
-        case 0 ... 15:
-           weatherImage = #imageLiteral(resourceName: "lessWarm")
+        case 1 ... 15:
+            weatherImage = #imageLiteral(resourceName: "lessWarm")
             weatherDescriptionText = Strings.WeatherList.lessWarm
             precipitationText = Strings.WeatherList.notRain
         case 16 ... 25:
@@ -43,14 +42,14 @@ struct WeatherListHeaderCellModel: PTableViewCellModel {
             weatherDescriptionText = Strings.WeatherList.veryWarm
             precipitationText = Strings.WeatherList.maybeRain
         default:
-            weatherImage = #imageLiteral(resourceName: "warm")
+            weatherImage = #imageLiteral(resourceName: "default")
             weatherDescriptionText = Strings.WeatherList.warm
             precipitationText = Strings.WeatherList.willRain
         }
         if weather.temperature.isLess(than: 0) {
-            temperatureValueText = String(weather.temperature) + "\u{2103}"
+            temperatureValueText = String(format: "%.0f\u{2103}", weather.temperature)
         } else {
-            temperatureValueText = "+ \(weather.temperature) \u{2103}"
+            temperatureValueText = String(format: "+%.0f\u{2103}", weather.temperature)
         }
         dateText = weather.date.dayMonthString
     }

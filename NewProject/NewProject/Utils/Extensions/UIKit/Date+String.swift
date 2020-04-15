@@ -12,4 +12,7 @@ extension Date {
     var dayMonthString: String {
         DateFormatter.dayMonthFormatter.string(from: self)
     }
+    var dayMonthStringNext: String {
+        DateFormatter.dayMonthFormatterNext.string(from: self)
+    }
 }

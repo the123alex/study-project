@@ -17,7 +17,7 @@ class WeatherListCodeCell: UITableViewCell {
         return label
     }()
 
-    let wetDescriptionLabel: UILabel = {
+    let precipitationDescriptionLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         label.textColor = .black
@@ -33,7 +33,7 @@ class WeatherListCodeCell: UITableViewCell {
         label.textColor = .gray
         return label
     }()
-    let wetValueLabel: UILabel = {
+    let precipitationValueLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
         label.textColor = .gray
@@ -50,7 +50,7 @@ class WeatherListCodeCell: UITableViewCell {
         return stackView
     }()
 
-    let wetStackView: UIStackView = {
+    let precipitationStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.distribution = .equalCentering
         stackView.alignment = .center
@@ -81,14 +81,14 @@ class WeatherListCodeCell: UITableViewCell {
         contentView.addSubviews(
             dateLabel,
             imageStackView,
-            wetStackView
+            precipitationStackView
         )
 
         imageStackView.addArrangedSubview(iconImageView)
         imageStackView.addArrangedSubview(temperatureValueLabel)
 
-        wetStackView.addArrangedSubview(wetDescriptionLabel)
-        wetStackView.addArrangedSubview(wetValueLabel)
+        precipitationStackView.addArrangedSubview(precipitationDescriptionLabel)
+        precipitationStackView.addArrangedSubview(precipitationValueLabel)
         backgroundColor = .white
         selectionStyle = .none
     }
@@ -108,7 +108,7 @@ class WeatherListCodeCell: UITableViewCell {
             make.leading.equalTo(dateLabel.snp.trailing).inset(-30)
         }
 
-        wetStackView.snp.makeConstraints { make in
+        precipitationStackView.snp.makeConstraints { make in
             make.leading.equalTo(imageStackView.snp.trailing).inset(-50)
             make.centerY.equalTo(imageStackView.snp.centerY)
             make.trailing.equalToSuperview().inset(10)
