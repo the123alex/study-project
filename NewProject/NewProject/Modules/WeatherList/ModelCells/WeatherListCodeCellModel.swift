@@ -41,7 +41,7 @@ struct WeatherListCodeCellModel: PTableViewCellModel {
             )
         } else {
             temperatureValueText = String(
-                format: "%.0f\u{2103}",
+                format: "+%.0f\u{2103}",
                 weather.temperature
             )
         }
