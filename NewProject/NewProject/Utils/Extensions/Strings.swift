@@ -19,8 +19,8 @@ enum Strings {
     enum WeatherList {
         static let veryWarm = "Жарко"
         static let warm = "Тепло"
-        static let lessWarm = "Немного тепло"
-        static let lessCold = "Прохладно"
+        static let lessWarm = "Прохладно"
+        static let lessCold = "Свежо"
         static let cold = "Холодно"
         static let veryCold = "Мороз"
 

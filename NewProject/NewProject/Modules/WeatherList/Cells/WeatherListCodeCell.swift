@@ -31,7 +31,6 @@ class WeatherListCodeCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
         label.textColor = .gray
-
         return label
     }()
     let wetValueLabel: UILabel = {

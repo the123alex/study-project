@@ -11,9 +11,7 @@ import UIKit
 struct WeatherListHeaderCellModel: PTableViewCellModel {
     let weatherImage: UIImage
     let dateText: String
-    var temperatureValueText: String {
-        String(Int.random(in: -30...40))
-    }
+    var temperatureValueText: String
     let weatherDescriptionText: String
     let precipitationText: String
     //let defaultImage = UIImage(named: "default")
@@ -49,7 +47,11 @@ struct WeatherListHeaderCellModel: PTableViewCellModel {
             weatherDescriptionText = Strings.WeatherList.warm
             precipitationText = Strings.WeatherList.willRain
         }
-
+        if weather.temperature.isLess(than: 0) {
+            temperatureValueText = String(weather.temperature) + "\u{2103}"
+        } else {
+            temperatureValueText = "+ \(weather.temperature) \u{2103}"
+        }
         dateText = weather.date.dayMonthString
     }
 

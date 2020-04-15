@@ -22,5 +22,11 @@ class WeatherListPresenter {
    }
 
    func viewDidLoad() {
+    let weather = Weather(temperature: Float.random(in: -30 ... 40).rounded(), date: Date(), precipitationChance: 100)
+
+    let cellModels: [PTableViewCellAnyModel] = [
+        WeatherListHeaderCellModel(weather: weather)
+    ]
+    view?.showData(with: cellModels)
    }
 }

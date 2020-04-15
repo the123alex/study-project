@@ -24,7 +24,7 @@ class WeatherListHeaderCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .black)
         label.textColor = .gray
-
+        label.textAlignment = .center
         return label
     }()
 
@@ -32,6 +32,8 @@ class WeatherListHeaderCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 30, weight: .black)
         label.textColor = .darkGray
+        label.textAlignment = .center
+        label.numberOfLines = 0
         return label
     }()
 
@@ -39,6 +41,8 @@ class WeatherListHeaderCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .black)
         label.textColor = .gray
+        label.numberOfLines = 0
+        label.textAlignment = .center
 
         return label
     }()
@@ -57,7 +61,7 @@ class WeatherListHeaderCell: UITableViewCell {
         stackView.distribution = .equalCentering
         stackView.alignment = .center
         stackView.axis = .vertical
-        stackView.spacing = 10
+        stackView.spacing = 5
         return stackView
     }()
 
@@ -98,11 +102,11 @@ private extension WeatherListHeaderCell {
         }
 
         iconImageView.snp.makeConstraints { make in
-            make.width.height.equalTo(120)
+            make.width.height.equalTo(100)
         }
 
         labelsStackView.snp.makeConstraints { make in
-            make.leading.equalTo(imageTempStackView.snp.trailing).inset(-50)
+            make.leading.equalTo(imageTempStackView.snp.trailing).offset(30)
             make.centerY.equalTo(imageTempStackView.snp.centerY)
             make.trailing.equalToSuperview().inset(10)
         }

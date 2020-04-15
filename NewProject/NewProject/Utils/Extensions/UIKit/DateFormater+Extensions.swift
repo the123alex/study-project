@@ -12,7 +12,7 @@ extension DateFormatter {
     static var dayMonthFormatter: DateFormatter = {
         let dayMonthFormatter = DateFormatter()
         dayMonthFormatter.locale = Locale(identifier: "ru_RU")
-        dayMonthFormatter.dateFormat = "dd MMMM yy"
+        dayMonthFormatter.dateFormat = "dd MMMM"
 
         return dayMonthFormatter
     }()
