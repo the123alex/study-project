@@ -29,10 +29,7 @@ class WeatherListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
 
-        tableView.register(
-            WeatherListHeaderCell.self,
-            forCellReuseIdentifier: String(describing: WeatherListHeaderCell.self)
-        )
+        tableView.register(models: [WeatherListHeaderCell.self])
         tableView.register(
             WeatherListCodeCell.self,
             forCellReuseIdentifier: String(describing: WeatherListCodeCell.self)

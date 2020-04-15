@@ -1,9 +1,9 @@
 //
 //  UIView+Extensions.swift
-//  NewProject
+//  Swift-Tutorial
 //
-//  Created by Aleksey on 08.04.2020.
-//  Copyright © 2020 Aleksey Mikhlev. All rights reserved.
+//  Created by Ilya Glazunov on 04.04.2020.
+//  Copyright © 2020 Ilya Glazunov. All rights reserved.
 //
 
 import UIKit
