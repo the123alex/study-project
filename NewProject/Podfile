@@ -3,6 +3,7 @@
 
 target 'NewProject' do
   pod 'SwiftLint'
+  pod 'SnapKit'
   use_frameworks!
 
   # Pods for NewProject
