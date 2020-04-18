@@ -25,7 +25,7 @@ class WeatherListPresenter {
     let currentDay = Date()
     var nextDay = DateComponents()
     nextDay.day = 1
-    let weatherHead = Weather(
+    let weatherToday = Weather(
         temperature: Float.random(in: -30 ... 40).rounded(),
         date: Date(),
         precipitationChance: Float.random(in: 0...100).rounded()
@@ -73,7 +73,7 @@ class WeatherListPresenter {
     )
 
     let cellModels: [PTableViewCellAnyModel] = [
-        WeatherListHeaderCellModel(weather: weatherHead),
+        WeatherListHeaderCellModel(weather: weatherToday),
         WeatherListCodeCellModel(weather: weatherFirst),
         WeatherListCodeCellModel(weather: weatherSecond),
         WeatherListCodeCellModel(weather: weatherThird),

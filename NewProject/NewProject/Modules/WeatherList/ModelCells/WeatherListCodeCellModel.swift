@@ -34,7 +34,7 @@ struct WeatherListCodeCellModel: PTableViewCellModel {
             weatherImage = #imageLiteral(resourceName: "default")
         }
 
-        if weather.temperature.isLess(than: 0) {
+        if weather.temperature <= 0 {
             temperatureValueText = String(
                 format: "%.0f\u{2103}",
                 weather.temperature
@@ -51,7 +51,7 @@ struct WeatherListCodeCellModel: PTableViewCellModel {
         precipitationChanceValueText = String(
             format: "%.0f",
             weather.precipitationChance
-        ) + "\u{0025}"
+        ) + "%"
     }
 
     func configure(cell: WeatherListCodeCell) {
