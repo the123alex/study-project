@@ -1,8 +1,8 @@
 //
-//  UIView+Extensions.swift
+//  WeatherListHeaderCellModel.swift
 //  NewProject
 //
-//  Created by Aleksey on 08.04.2020.
+//  Created by Aleksey on 15.04.2020.
 //  Copyright © 2020 Aleksey Mikhlev. All rights reserved.
 //
 
