@@ -19,7 +19,7 @@ import UIKit
 
         let navigationController = UINavigationController(rootViewController: viewController)
         let router = StartupRouter(navigationController: navigationController)
-        let presenter = StartupPresenter(view: viewController, router: router)
+        let presenter = StartupPresenter(view: viewController, router: router, weatherAPI: WeatherAPI(network: NetworkProvider()))
         viewController.presenter = presenter
 
         return navigationController

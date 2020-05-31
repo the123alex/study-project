@@ -10,18 +10,19 @@ import Foundation
 
 class WeatherListPresenter {
 
-   private weak var view: WeatherListViewController?
-   private let router: WeatherListRouter
+    private weak var view: WeatherListViewController?
+    private let router: WeatherListRouter
+    
+    init(
+        view: WeatherListViewController,
+        router: WeatherListRouter
+    ) {
+        self.view = view
+        self.router = router
 
-   init(
-       view: WeatherListViewController,
-       router: WeatherListRouter
-   ) {
-       self.view = view
-       self.router = router
-   }
+    }
 
-   func viewDidLoad() {
+    func viewDidLoad() {
     let currentDay = Date()
     var nextDay = DateComponents()
     nextDay.day = 1
