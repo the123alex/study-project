@@ -33,19 +33,21 @@ struct WeatherStatisticDTO: Decodable {
 
 struct MainInformation: Decodable {
     let temp: Double
-   }
-   struct WeatherInformation: Decodable {
+    }
+
+struct WeatherInformation: Decodable {
     let main: String
     let description: String
-   }
+}
 
-   struct Clouds: Decodable {
+struct Clouds: Decodable {
     let all: Int
-   }
-   struct Wind: Decodable {
-    let speed: Double
-   }
+}
 
-   struct Sys: Decodable {
+struct Wind: Decodable {
+    let speed: Double
+}
+
+struct Sys: Decodable {
     let pod: String
-   }
+}

@@ -22,11 +22,9 @@ class WeatherAPIMock: WeatherAPIProtocol {
     func loadStatistic(
         by cityName: String,
         completion: @escaping (
-        Result<BaseResponseDTO<WeatherStatisticDTO>,
-        NetworkError>
-        ) -> Void
-    ) {
-    }
+            Result<BaseResponseDTO<WeatherStatisticDTO>, NetworkError>
+            ) -> Void
+    ) {}
 }
 
 class WeatherAPI: WeatherAPIProtocol {
@@ -44,8 +42,8 @@ class WeatherAPI: WeatherAPIProtocol {
     func loadStatistic(
         by cityName: String,
         completion: @escaping (
-        Result<BaseResponseDTO<WeatherStatisticDTO>,
-        NetworkError>) -> Void
+        Result<BaseResponseDTO<WeatherStatisticDTO>, NetworkError>
+        ) -> Void
     ) {
         let requestPrototype = NetworkRequestPrototype(
             method: .get,
