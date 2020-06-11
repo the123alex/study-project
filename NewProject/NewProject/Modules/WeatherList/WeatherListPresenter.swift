@@ -26,7 +26,6 @@ class WeatherListPresenter {
     }
 
     func viewDidLoad() {
-        //var weatherToday: Weather
         var weatherArray: [Weather] = []
 
         weatherAPI.loadWeather(by: "Moscow") { [weak self] result in
@@ -39,65 +38,6 @@ class WeatherListPresenter {
                         precipitationChance: Double(element.main.humidity)
                     ))
                 }
-//                let currentDay = Date()
-//                                var nextDay = DateComponents()
-//                                nextDay.day = 1
-//                            //    let weatherToday = Weather(
-//                            //        temperature: Double.random(in: -30 ... 40).rounded(),
-//                            //        date: Date(),
-//                            //        precipitationChance: Double.random(in: 0...100).rounded()
-//                            //    )
-//
-//                                let weatherFirst = Weather(
-//                                    temperature: Double.random(in: -30 ... 40).rounded(),
-//                                    date: Calendar.current.date(byAdding: nextDay, to: currentDay) ?? Date(),
-//                                    precipitationChance: Double.random(in: 0...100).rounded()
-//                                )
-//                                nextDay.day? += 1
-//
-//                                let weatherSecond = Weather(
-//                                    temperature: Double.random(in: -30 ... 40).rounded(),
-//                                    date: Calendar.current.date(byAdding: nextDay, to: currentDay) ?? Date(),
-//                                    precipitationChance: Double.random(in: 0...100).rounded()
-//                                )
-//                                nextDay.day? += 1
-//
-//                                let weatherThird = Weather(
-//                                    temperature: Double.random(in: -30 ... 40).rounded(),
-//                                    date: Calendar.current.date(byAdding: nextDay, to: currentDay) ?? Date(),
-//                                    precipitationChance: Double.random(in: 0...100).rounded()
-//                                )
-//                                nextDay.day? += 1
-//
-//                                let weatherFourth = Weather(
-//                                    temperature: Double.random(in: -30 ... 40).rounded(),
-//                                    date: Calendar.current.date(byAdding: nextDay, to: currentDay) ?? Date(),
-//                                    precipitationChance: Double.random(in: 0...100).rounded()
-//                                )
-//                                nextDay.day? += 1
-//
-//                                let weatherFifth = Weather(
-//                                    temperature: Double.random(in: -30 ... 40).rounded(),
-//                                    date: Calendar.current.date(byAdding: nextDay, to: currentDay) ?? Date(),
-//                                    precipitationChance: Double.random(in: 0...100).rounded()
-//                                )
-//                                nextDay.day? += 1
-//
-//                                let weatherSixth = Weather(
-//                                    temperature: Double.random(in: -30 ... 40).rounded(),
-//                                    date: Calendar.current.date(byAdding: nextDay, to: currentDay) ?? Date(),
-//                                    precipitationChance: Double.random(in: 0...100).rounded()
-//                                )
-//
-//                                let cellModels: [PTableViewCellAnyModel] = [
-//                                    WeatherListHeaderCellModel(weather: weatherToday),
-//                                    WeatherListCodeCellModel(weather: weatherFirst),
-//                                    WeatherListCodeCellModel(weather: weatherSecond),
-//                                    WeatherListCodeCellModel(weather: weatherThird),
-//                                    WeatherListCodeCellModel(weather: weatherFourth),
-//                                    WeatherListCodeCellModel(weather: weatherFifth),
-//                                    WeatherListCodeCellModel(weather: weatherSixth)
-//                                ]
                 var cellModels: [PTableViewCellAnyModel] = []
 
                 for element in weatherArray {
