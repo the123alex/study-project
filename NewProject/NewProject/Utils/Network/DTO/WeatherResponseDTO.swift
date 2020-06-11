@@ -8,7 +8,11 @@
 //swiftlint:disable nesting
 import Foundation
 
-struct WeatherStatisticDTO: Decodable {
+struct WeatherResponseDTO: Decodable {
+    let cod: String
+    let message: Double
+    let list: [List]
+    let city: City
 
     struct List: Decodable {
         let dateNumber: Int
@@ -16,7 +20,6 @@ struct WeatherStatisticDTO: Decodable {
         let weather: [WeatherInformation]
         let clouds: Clouds
         let wind: Wind
-        let sys: Sys
         let dateText: String
 
         enum CodingKeys: String, CodingKey {
@@ -25,29 +28,32 @@ struct WeatherStatisticDTO: Decodable {
             case weather
             case clouds
             case wind
-            case sys
             case dateText = "dt_txt"
         }
     }
-}
 
-struct MainInformation: Decodable {
-    let temp: Double
+    struct MainInformation: Decodable {
+        let temp: Double
+        let humidity: Int
+        }
+
+    struct WeatherInformation: Decodable {
+        let id: Int
+        let main: String
+        let description: String
     }
 
-struct WeatherInformation: Decodable {
-    let main: String
-    let description: String
-}
+    struct Clouds: Decodable {
+        let all: Int
+    }
 
-struct Clouds: Decodable {
-    let all: Int
-}
+    struct Wind: Decodable {
+        let speed: Double
+    }
 
-struct Wind: Decodable {
-    let speed: Double
-}
-
-struct Sys: Decodable {
-    let pod: String
+    struct City: Decodable {
+        let name: String
+        let sunrise: Int
+        let sunset: Int
+    }
 }

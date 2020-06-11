@@ -36,24 +36,6 @@ import Foundation
     }
 
     func didTapWeatherListButton() {
-        weatherAPI.loadStatistic(by: "Moscow") { [weak self] result in
-                   switch result {
-                   case .success(let responseDTO):
-                       let covidViewModel = StartupViewModel(
-                        title: "Всего случаев: \(responseDTO.cod)",
-                        description: "Вылечилось: ",
-                        firstButtonTitle: Strings.Startup.firstButtonTitle,
-                        secondButtonTitle: Strings.Startup.secondButonTitle
-                       )
-                       print(result)
-
-                       self?.view?.bindData(with: covidViewModel)
-                   case .failure(let error):
-                    print(result)
-
-                    print(error.localizedDescription)
-                   }
-        }
-      //  router.showWeatherList()
+        router.showWeatherList()
     }
  }

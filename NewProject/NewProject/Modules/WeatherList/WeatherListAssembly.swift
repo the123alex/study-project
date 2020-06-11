@@ -24,7 +24,7 @@ import UIKit
         }
 
         let router = WeatherListRouter(navigationController: navigationController)
-        let presenter = WeatherListPresenter(view: viewController, router: router)
+        let presenter = WeatherListPresenter(view: viewController, router: router, weatherAPI: WeatherAPI(network: NetworkProvider()))
         viewController.presenter = presenter
 
         return viewController

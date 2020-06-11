@@ -9,7 +9,7 @@
 import Foundation
 
 struct Weather {
-    let temperature: Float
+    let temperature: Double
     let date: Date
-    let precipitationChance: Float
+    let precipitationChance: Double
 }

@@ -9,20 +9,18 @@
 import Foundation
 
 protocol WeatherAPIProtocol {
-    func loadStatistic(
+    func loadWeather(
         by cityName: String,
         completion: @escaping (
-        Result<BaseResponseDTO<WeatherStatisticDTO>,
-        NetworkError>
-        ) -> Void
+        Result<WeatherResponseDTO, NetworkError>) -> Void
     )
 }
 
 class WeatherAPIMock: WeatherAPIProtocol {
-    func loadStatistic(
+    func loadWeather(
         by cityName: String,
         completion: @escaping (
-            Result<BaseResponseDTO<WeatherStatisticDTO>, NetworkError>
+            Result<WeatherResponseDTO, NetworkError>
             ) -> Void
     ) {}
 }
@@ -39,10 +37,10 @@ class WeatherAPI: WeatherAPIProtocol {
         self.requestBuilder = requestBuilder
     }
 
-    func loadStatistic(
+    func loadWeather(
         by cityName: String,
         completion: @escaping (
-        Result<BaseResponseDTO<WeatherStatisticDTO>, NetworkError>
+        Result<WeatherResponseDTO, NetworkError>
         ) -> Void
     ) {
         let requestPrototype = NetworkRequestPrototype(
@@ -52,6 +50,7 @@ class WeatherAPI: WeatherAPIProtocol {
             headers: [:],
             queryParams: [
                 "q": [cityName],
+                "units": ["metric"],
                 "appid": ["0e09e2d025867d8ce34fc90927b5c5a8"]
             ]
         )
