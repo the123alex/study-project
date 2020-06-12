@@ -12,6 +12,22 @@ class WeatherListHeaderCell: UITableViewCell {
 
     let iconImageView = UIImageView()
 
+    let currentCityDescription: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+        label.textColor = .black
+
+        return label
+    }()
+
+    let currentCityButton: UIButton = {
+        let button = UIButton()
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+        button.setTitleColor(.blue, for: .normal)
+
+        return button
+    }()
+
     let temperatureValueLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
@@ -45,6 +61,15 @@ class WeatherListHeaderCell: UITableViewCell {
         label.textAlignment = .center
 
         return label
+    }()
+
+    let currentCityStack: UIStackView = {
+        let stackView = UIStackView()
+        stackView.distribution = .fillEqually
+        stackView.alignment = .center
+        stackView.axis = .horizontal
+
+        return stackView
     }()
 
     let imageTempStackView: UIStackView = {
@@ -81,9 +106,13 @@ class WeatherListHeaderCell: UITableViewCell {
 private extension WeatherListHeaderCell {
     func setupViews() {
         contentView.addSubviews(
+            currentCityStack,
             imageTempStackView,
             labelsStackView
         )
+        currentCityStack.addArrangedSubview(currentCityDescription)
+        currentCityStack.addArrangedSubview(currentCityButton)
+
         imageTempStackView.addArrangedSubview(iconImageView)
         imageTempStackView.addArrangedSubview(temperatureValueLabel)
 
@@ -96,8 +125,14 @@ private extension WeatherListHeaderCell {
     }
 
     func makeConstraints() {
+        currentCityStack.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(5)
+            make.bottom.equalTo(imageTempStackView.snp.top).inset(-10)
+            make.centerX.equalToSuperview()
+        }
+
         imageTempStackView.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview()
+            make.bottom.equalToSuperview()
             make.leading.equalToSuperview().inset(10)
         }
 

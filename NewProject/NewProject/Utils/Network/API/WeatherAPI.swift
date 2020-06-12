@@ -51,6 +51,7 @@ class WeatherAPI: WeatherAPIProtocol {
             queryParams: [
                 "q": [cityName],
                 "units": ["metric"],
+                "lang": ["ru"],
                 "appid": ["0e09e2d025867d8ce34fc90927b5c5a8"]
             ]
         )

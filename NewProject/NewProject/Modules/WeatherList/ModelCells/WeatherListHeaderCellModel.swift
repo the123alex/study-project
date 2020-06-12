@@ -14,6 +14,8 @@ struct WeatherListHeaderCellModel: PTableViewCellModel {
     let temperatureValueText: String
     let weatherDescriptionText: String
     let precipitationText: String
+    let currentCityDescription: String
+    let currentCity: String
 
     init(weather: Weather) {
         switch weather.temperature {
@@ -53,6 +55,8 @@ struct WeatherListHeaderCellModel: PTableViewCellModel {
         }
         //dateText = weather.date.dayMonthString
         dateText = weather.date.toString(.custom("dd.MM"))
+        currentCity = weather.currentCity
+        currentCityDescription = "Погода в городе"
     }
 
     func configure(cell: WeatherListHeaderCell) {
@@ -61,5 +65,7 @@ struct WeatherListHeaderCellModel: PTableViewCellModel {
         cell.precipitationLabel.text = precipitationText
         cell.temperatureValueLabel.text = temperatureValueText
         cell.weatherLabel.text = weatherDescriptionText
+        cell.currentCityButton.setTitle(currentCity, for: .normal)
+        cell.currentCityDescription.text = currentCityDescription
     }
 }

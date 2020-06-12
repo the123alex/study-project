@@ -13,4 +13,5 @@ struct Weather {
     let temperature: Double
     let date: DateInRegion
     let precipitationChance: Double
+    let currentCity: String
 }

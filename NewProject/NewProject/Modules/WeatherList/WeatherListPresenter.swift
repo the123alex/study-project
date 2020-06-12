@@ -38,7 +38,8 @@ class WeatherListPresenter {
                     weatherArray.append(Weather(
                         temperature: element.main.temp,
                         date: testDate ?? helpDate,
-                        precipitationChance: Double(element.main.humidity)
+                        precipitationChance: Double(element.main.humidity),
+                        currentCity: responseDTO.city.name
                     ))
                 }
                 var cellModels: [PTableViewCellAnyModel] = []
