@@ -51,7 +51,8 @@ struct WeatherListHeaderCellModel: PTableViewCellModel {
         } else {
             temperatureValueText = String(format: "+%.0f\u{2103}", weather.temperature)
         }
-        dateText = weather.date.dayMonthString
+        //dateText = weather.date.dayMonthString
+        dateText = weather.date.toString(.custom("dd.MM"))
     }
 
     func configure(cell: WeatherListHeaderCell) {

@@ -45,7 +45,8 @@ struct WeatherListCodeCellModel: PTableViewCellModel {
                 weather.temperature
             )
         }
-        dateText = weather.date.dayMonthStringNext
+        //dateText = weather.date.dayMonthStringNext
+        dateText = weather.date.toString(.custom("dd.MM"))
         precipitationChanceDescriptionText = Strings.WeatherList.precititation
 
         precipitationChanceValueText = String(

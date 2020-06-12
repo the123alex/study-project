@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import SwiftDate
 
 struct Weather {
     let temperature: Double
-    let date: Date
+    let date: DateInRegion
     let precipitationChance: Double
 }
