@@ -28,7 +28,7 @@ class WeatherListPresenter {
     func viewDidLoad() {
         var weatherArray: [Weather] = []
 
-        weatherAPI.loadWeather(by: "Moscow") { [weak self] result in
+        weatherAPI.loadWeather(by: "Курганинск") { [weak self] result in
             switch result {
             case .success(let responseDTO):
                 for element in responseDTO.list {
@@ -43,12 +43,11 @@ class WeatherListPresenter {
                 for element in weatherArray {
                     cellModels.append(WeatherListCodeCellModel(weather: element))
                 }
-                            self!.view?.showData(with: cellModels)
+                self!.view?.showData(with: cellModels)
             case .failure(let error):
-                           print(result)
-
-                           print(error.localizedDescription)
-                          }
+                print(result)
+                print(error.localizedDescription)
+            }
         }
     }
 }
