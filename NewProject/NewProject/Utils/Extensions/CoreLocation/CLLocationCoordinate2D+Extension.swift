@@ -10,6 +10,6 @@ import CoreLocation
 
 extension CLLocationCoordinate2D {
     var locationCoordinate: LocationCoordinate {
-        LocationCoordinate(lan: latitude, lon: longitude)
+        LocationCoordinate(coreLocationCoordinate: self)
     }
 }

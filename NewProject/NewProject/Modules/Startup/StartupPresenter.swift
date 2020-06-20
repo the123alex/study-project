@@ -13,15 +13,19 @@ import Foundation
     private weak var view: StartupViewController?
     private let router: StartupRouter
     private let weatherAPI: WeatherAPIProtocol
+    private let locationService: LocationService
+    private var isRequestLocationNeeded: Bool = false
 
     init(
         view: StartupViewController,
         router: StartupRouter,
-        weatherAPI: WeatherAPIProtocol
+        weatherAPI: WeatherAPIProtocol,
+        locationService: LocationService
     ) {
         self.view = view
         self.router = router
         self.weatherAPI = weatherAPI
+        self.locationService = locationService
     }
 
     func viewDidLoad() {
@@ -33,11 +37,51 @@ import Foundation
 
         view?.bindData(with: startupViewModel
         )
+
+        locationService.delegate = self
     }
 
     func didTapWeatherListButton() {
         let defaults = UserDefaults.standard
         defaults.set(true, forKey: "Enter")
-        router.showWeatherList()
+        router.showWeatherList(cityName: "", coordinates: nil)
+    }
+
+    func didTapLocationButton() {
+        switch locationService.authorizationStatus {
+        case .authorizedWhenInUse, .authorizedAlways:
+            requestLocation()
+        case .notDetermined:
+            locationService.requestAccess()
+            isRequestLocationNeeded = true
+        case .denied, .restricted:
+            router.showLocationDisabledAlert()
+            isRequestLocationNeeded = true
+        @unknown default:
+            break
+        }
     }
  }
+
+extension StartupPresenter: LocationServiceDelegate {
+    func didChangeAuthorizationStatus(hasAccess: Bool) {
+        guard isRequestLocationNeeded, hasAccess else {
+            return
+        }
+        isRequestLocationNeeded = false
+        requestLocation()
+    }
+}
+
+private extension StartupPresenter {
+    func requestLocation() {
+        locationService.requestLocation { [router] result in
+            switch result {
+            case .success(let coordinates):
+                router.showWeatherList(cityName: nil, coordinates: coordinates)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+}

@@ -36,6 +36,10 @@ class StartupViewController: UIViewController {
     @IBAction private func didTapWeatherListButton(_ sender: UIButton) {
         presenter.didTapWeatherListButton()
     }
+
+    @IBAction private func didTapLocationButton(_ sender: UIButton) {
+        presenter.didTapLocationButton()
+    }
 }
 
  //Data Binding

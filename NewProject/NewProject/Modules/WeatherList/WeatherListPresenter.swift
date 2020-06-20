@@ -15,21 +15,36 @@ class WeatherListPresenter {
     private weak var view: WeatherListViewController?
     private let router: WeatherListRouter
     private let weatherAPI: WeatherAPI
+    let cityName: String?
+    let coordinates: LocationCoordinate?
+    private let settingsStorage: SettingsStorage
 
     init(
         view: WeatherListViewController,
         router: WeatherListRouter,
-        weatherAPI: WeatherAPI
+        weatherAPI: WeatherAPI,
+        cityName: String?,
+        coordinates: LocationCoordinate?,
+        settingsStorage: SettingsStorage
     ) {
         self.view = view
         self.router = router
         self.weatherAPI = weatherAPI
+        self.cityName = cityName
+        self.coordinates = coordinates
+        self.settingsStorage = settingsStorage
     }
 
     func viewDidLoad() {
         var weatherArray: [Weather] = []
+        //settingsStorage.coordinates = LocationCoordinate(lat: <#T##Double#>, lon: <#T##Double#>)
+        if let coordinates = self.coordinates {
+        } else if let cityName = self.cityName {
+        } else {
+            assertionFailure("Coordinations or city name must be not nil")
+        }
 
-        weatherAPI.loadWeather(by: "Курганинск") { [weak self] result in
+        weatherAPI.loadWeather(by: "Москва") { [weak self] result in
             switch result {
             case .success(let responseDTO):
                 for element in responseDTO.list {

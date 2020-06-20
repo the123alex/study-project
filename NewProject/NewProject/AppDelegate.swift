@@ -17,17 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        let defaults = UserDefaults.standard
-        if defaults.bool(forKey: "Enter") == false {
+      //  let defaults = UserDefaults.standard
+        //if defaults.bool(forKey: "Enter") == false {
             let navigationController = StartupAssembly().create()
             window?.rootViewController = navigationController
             window?.makeKeyAndVisible()
             return true
-        } else {
-            window?.rootViewController = WeatherListAssembly(navigationController: UINavigationController()).create()
-            window?.makeKeyAndVisible()
-        }
-        return true
+//        } else {
+//            window?.rootViewController = WeatherListAssembly(navigationController: UINavigationController()).create()
+//            window?.makeKeyAndVisible()
+//        }
+    //    return true
     }
 
     // MARK: UISceneSession Lifecycle

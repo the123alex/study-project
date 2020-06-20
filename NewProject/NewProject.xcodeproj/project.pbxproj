@@ -36,6 +36,8 @@
 		C79789ED2433E3A0006525F8 /* WeatherListAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79789E92433E3A0006525F8 /* WeatherListAssembly.swift */; };
 		C79789F22433E841006525F8 /* WeatherListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79789F02433E841006525F8 /* WeatherListCell.swift */; };
 		C79789F32433E841006525F8 /* WeatherListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79789F12433E841006525F8 /* WeatherListCell.xib */; };
+		C7B04068249A6A4600C93AFB /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B04067249A6A4600C93AFB /* LocationService.swift */; };
+		C7B0406B249DF71300C93AFB /* SettingsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B0406A249DF71300C93AFB /* SettingsStorage.swift */; };
 		C7BB0BFC2447181F007B6EDB /* PTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BB0BFB2447181F007B6EDB /* PTableViewCellModel.swift */; };
 		C7BB0C01244719F9007B6EDB /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BB0BFE244719F9007B6EDB /* UIView+Extensions.swift */; };
 		C7BB0C02244719F9007B6EDB /* DateFormater+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BB0BFF244719F9007B6EDB /* DateFormater+Extensions.swift */; };
@@ -108,6 +110,8 @@
 		C79789E92433E3A0006525F8 /* WeatherListAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListAssembly.swift; sourceTree = "<group>"; };
 		C79789F02433E841006525F8 /* WeatherListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListCell.swift; sourceTree = "<group>"; };
 		C79789F12433E841006525F8 /* WeatherListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherListCell.xib; sourceTree = "<group>"; };
+		C7B04067249A6A4600C93AFB /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		C7B0406A249DF71300C93AFB /* SettingsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStorage.swift; sourceTree = "<group>"; };
 		C7BB0BFB2447181F007B6EDB /* PTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PTableViewCellModel.swift; sourceTree = "<group>"; };
 		C7BB0BFE244719F9007B6EDB /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		C7BB0BFF244719F9007B6EDB /* DateFormater+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormater+Extensions.swift"; sourceTree = "<group>"; };
@@ -235,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				C7243DD1241D39F500AE6B83 /* AppDelegate.swift */,
+				C7B04066249A6A1500C93AFB /* Services */,
 				C7E55B0E249183DA0062BCE6 /* Entities */,
 				C7243DD7241D39F500AE6B83 /* Main.storyboard */,
 				C7243DDA241D39F600AE6B83 /* Assets.xcassets */,
@@ -332,6 +337,23 @@
 				C79789F12433E841006525F8 /* WeatherListCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		C7B04066249A6A1500C93AFB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C7B04069249DF6EC00C93AFB /* SettingsStorage */,
+				C7B04067249A6A4600C93AFB /* LocationService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		C7B04069249DF6EC00C93AFB /* SettingsStorage */ = {
+			isa = PBXGroup;
+			children = (
+				C7B0406A249DF71300C93AFB /* SettingsStorage.swift */,
+			);
+			path = SettingsStorage;
 			sourceTree = "<group>";
 		};
 		C7BB0BF9244717B9007B6EDB /* Protocols */ = {
@@ -680,6 +702,7 @@
 				C76BCACF242F1C0F00492952 /* StartupRouter.swift in Sources */,
 				C7BB0C0B244754C4007B6EDB /* Date+String.swift in Sources */,
 				C7243DD2241D39F500AE6B83 /* AppDelegate.swift in Sources */,
+				C7B0406B249DF71300C93AFB /* SettingsStorage.swift in Sources */,
 				C7BB0C03244719F9007B6EDB /* UITableView+Extensions.swift in Sources */,
 				C7BB0C0D244776D7007B6EDB /* WeatherListCodeCellModel.swift in Sources */,
 				C76BCB30243372D300492952 /* Strings.swift in Sources */,
@@ -690,6 +713,7 @@
 				C707B42224816EA500DFFEB9 /* RequestHeaderProvider.swift in Sources */,
 				C707B42B24818BFC00DFFEB9 /* WeatherAPI.swift in Sources */,
 				C707B41C24811BA700DFFEB9 /* Network.swift in Sources */,
+				C7B04068249A6A4600C93AFB /* LocationService.swift in Sources */,
 				C707B420248124F000DFFEB9 /* NetworkRequestPrototype.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

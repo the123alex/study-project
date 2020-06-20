@@ -5,6 +5,7 @@
 //  Created by Aleksey on 08.04.2020.
 //  Copyright © 2020 Aleksey Mikhlev. All rights reserved.
 //
+//swiftlint:disable attributes
 import SnapKit
 import UIKit
 
@@ -24,6 +25,8 @@ class WeatherListHeaderCell: UITableViewCell {
         let button = UIButton()
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
         button.setTitleColor(.blue, for: .normal)
+        button.setTitleColor(.red, for: .highlighted)
+        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
 
         return button
     }()
@@ -145,5 +148,9 @@ private extension WeatherListHeaderCell {
             make.centerY.equalTo(imageTempStackView.snp.centerY)
             make.trailing.equalToSuperview().inset(10)
         }
+    }
+//swiftlint:disable implicitly_unwrapped_optional
+    @objc func buttonAction(sender: UIButton!) {
+         print("Button Clicked")
     }
 }

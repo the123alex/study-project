@@ -10,10 +10,10 @@ import Foundation
 
 enum Strings {
     enum Startup {
-        static let title = "Weather App"
+        static let title = "What the forecast?"
         static let description = "Приложение покажет погоду по вашему местоположению"
-        static let firstButtonTitle = "To weather"
-        static let secondButonTitle = "About us"
+        static let firstButtonTitle = "Погода по городу"
+        static let secondButonTitle = "Погода по геолокации"
     }
 
     enum WeatherList {
@@ -29,5 +29,12 @@ enum Strings {
         static let notRain = "Не будет осадков"
 
         static let precititation = "Вероятность осадков"
+    }
+
+    enum GeoAccess {
+        static let title = "Нет доступа"
+        static let message = "Необходимо подтвердить"
+        static let goToSettings = "Перейти"
+        static let cancel = "Отмена"
     }
 }

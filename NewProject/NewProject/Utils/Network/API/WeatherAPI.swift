@@ -58,6 +58,7 @@ class WeatherAPI: WeatherAPIProtocol {
         network.performRequest(
             requestPrototype,
             requestBuilder: requestBuilder,
-            completion: completion)
+            completion: completion
+        )
     }
 }

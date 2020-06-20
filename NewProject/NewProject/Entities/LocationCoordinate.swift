@@ -10,10 +10,20 @@ import CoreLocation
 import Foundation
 
 struct LocationCoordinate {
-    let lan: Double
+    let lat: Double
     let lon: Double
 
+    init(coreLocationCoordinate: CLLocationCoordinate2D) {
+        self.lat = coreLocationCoordinate.latitude
+        self.lon = coreLocationCoordinate.longitude
+    }
+
+    init(lat: Double, lon: Double) {
+        self.lat = lat
+        self.lon = lon
+    }
+
     var coreLocationCoordinate: CLLocationCoordinate2D {
-        CLLocationCoordinate2D(latitude: lan, longitude: lon)
+        CLLocationCoordinate2D(latitude: lat, longitude: lon)
     }
 }
