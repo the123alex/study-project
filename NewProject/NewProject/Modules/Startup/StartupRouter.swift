@@ -6,6 +6,7 @@
 //  Copyright © 2020 Aleksey Mikhlev. All rights reserved.
 //
 
+//swiftlint:disable closure_end_indentation
 import UIKit
 
  class StartupRouter {
@@ -15,12 +16,42 @@ import UIKit
         self.navigationController = navigationController
     }
 
+    func showCitySelect() {
+        let alert = UIAlertController(
+            title: Strings.CitySearchAlertText.title,
+            message: nil,
+            preferredStyle: .alert
+        )
+        alert.addTextField { textField in
+            textField.placeholder = "Enter First Name"
+        }
+
+        alert.addAction(UIAlertAction(
+            title: Strings.CitySearchAlertText.goToForecast,
+            style: .default,
+            handler: { _ in
+                //print(textField?.first?.text)
+                let textField = alert.textFields?.first?.text
+
+                self.showWeatherList(cityName: textField, coordinates: nil)
+        }
+        ))
+
+        alert.addAction(UIAlertAction(
+            title: Strings.CitySearchAlertText.cancel,
+            style: .cancel,
+            handler: nil
+        ))
+        navigationController.present(alert, animated: true)
+    }
+
     func showLocationDisabledAlert() {
         let alert = UIAlertController(
             title: Strings.GeoAccess.title,
             message: Strings.GeoAccess.message,
             preferredStyle: .alert
         )
+
         alert.addAction(UIAlertAction(
             title: Strings.GeoAccess.goToSettings,
             style: .default,
@@ -44,7 +75,7 @@ import UIKit
             cityName: cityName,
             coordinates: coordinates
         ).create()
-        navigationController.pushViewController(weatherListVC, animated: true)
+        navigationController.present(weatherListVC, animated: true)
     }
 
     private func showAppPreferences(completion: ((Bool) -> Void)? = nil) {

@@ -44,7 +44,8 @@ import Foundation
     func didTapWeatherListButton() {
         let defaults = UserDefaults.standard
         defaults.set(true, forKey: "Enter")
-        router.showWeatherList(cityName: "", coordinates: nil)
+        //router.showWeatherList(cityName: "", coordinates: nil)
+        router.showCitySelect()
     }
 
     func didTapLocationButton() {

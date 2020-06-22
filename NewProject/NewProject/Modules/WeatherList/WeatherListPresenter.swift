@@ -6,6 +6,7 @@
 //Copyright © 2020 Aleksey Mikhlev. All rights reserved.
 //
 //swiftlint:disable force_unwrapping
+//swiftlint:disable closure_end_indentation
 
 import Foundation
 import SwiftDate
@@ -18,6 +19,7 @@ class WeatherListPresenter {
     let cityName: String?
     let coordinates: LocationCoordinate?
     private let settingsStorage: SettingsStorage
+    var weatherArray: [Weather] = []
 
     init(
         view: WeatherListViewController,
@@ -36,7 +38,7 @@ class WeatherListPresenter {
     }
 
     func viewDidLoad() {
-        var weatherArray: [Weather] = []
+
         //settingsStorage.coordinates = LocationCoordinate(lat: <#T##Double#>, lon: <#T##Double#>)
         if let coordinates = self.coordinates {
         } else if let cityName = self.cityName {
@@ -44,30 +46,95 @@ class WeatherListPresenter {
             assertionFailure("Coordinations or city name must be not nil")
         }
 
-        weatherAPI.loadWeather(by: "Москва") { [weak self] result in
+        loadWeather(city: cityName!)
+    }
+}
+
+extension WeatherListPresenter {
+
+    func loadWeather(city: String) {
+        weatherAPI.loadWeather(by: city) { [weak self] result in
+
             switch result {
             case .success(let responseDTO):
                 for element in responseDTO.list {
                     let testDate = element.dateText.toDate()
-                    let helpDate = DateInRegion().dateAt(.endOfDay)
-                    weatherArray.append(Weather(
-                        temperature: element.main.temp,
-                        date: testDate ?? helpDate,
-                        precipitationChance: Double(element.main.humidity),
-                        currentCity: responseDTO.city.name
+                    //let helpDate = DateInRegion().dateAt(.endOfDay)
+
+                    //if testDate?.isToday ?? true {
+                    self!.weatherArray.append(Weather(
+                        temperatureToday: element.main.temp,
+                        temperatureTommorow: element.main.temp,
+                        weatherDescription: element.weather[0].main,
+                        currentCityName: responseDTO.city.name
                     ))
+                    //}
                 }
                 var cellModels: [PTableViewCellAnyModel] = []
-                cellModels.append(WeatherListHeaderCellModel(weather: weatherArray[0]))
-
-                for index in 1 ..< weatherArray.count {
-                    cellModels.append(WeatherListCodeCellModel(weather: weatherArray[index]))
-                }
+                cellModels.append(WeatherListHeaderCellModel(weather: self!.weatherArray[0]))
+        //                for index in 1 ..< weatherArray.count {
+        //                    cellModels.append(WeatherListCodeCellModel(weather: weatherArray[index]))
+        //                }
                 self!.view?.showData(with: cellModels)
             case .failure(let error):
+                switch error {
+                case .httpFailure(404):
+                    self!.notFindCity()
+                default:
+                    return
+                }
                 print(result)
                 print(error.localizedDescription)
             }
         }
+    }
+}
+
+extension WeatherListPresenter {
+
+    func notFindCity() {
+         let alert = UIAlertController(
+            title: Strings.CityNotFoundAlertText.title,
+            message: Strings.CityNotFoundAlertText.message,
+            preferredStyle: .alert
+        )
+
+        alert.addAction(UIAlertAction(
+            title: Strings.CityNotFoundAlertText.okGo,
+            style: .default,
+            handler: { _ in
+                
+                self.showCitySelect()
+        }
+            ))
+        self.view?.present(alert, animated: true)
+    }
+
+    func showCitySelect() {
+        let alert = UIAlertController(
+            title: Strings.CitySearchAlertText.title,
+            message: nil,
+            preferredStyle: .alert
+        )
+        alert.addTextField { textField in
+            textField.placeholder = "Введите город"
+        }
+
+        alert.addAction(UIAlertAction(
+            title: Strings.CitySearchAlertText.goToForecast,
+            style: .default,
+            handler: { _ in
+                let textField = alert.textFields?.first?.text
+
+                self.loadWeather(city: textField ?? "")
+        }
+        ))
+
+        alert.addAction(UIAlertAction(
+            title: Strings.CitySearchAlertText.cancel,
+            style: .cancel,
+            handler: nil
+        ))
+        self.view?.present(alert, animated: true)
     }
 }

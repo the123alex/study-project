@@ -19,12 +19,15 @@ class StartupViewController: UIViewController {
     @IBOutlet weak var showWeather: UIButton!
     @IBOutlet weak var aboutButton: UIButton!
     @IBOutlet weak var blurView: UIView!
+    @IBOutlet weak var sunView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        navigationController?.navigationBar.isHidden = true
         showWeather.layer.cornerRadius = 20
         aboutButton.layer.cornerRadius = 20
+        sunView.layer.cornerRadius = 35
 
         presenter.viewDidLoad()
     }

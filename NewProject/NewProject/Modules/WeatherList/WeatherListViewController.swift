@@ -33,7 +33,8 @@ class WeatherListViewController: UIViewController {
     private func setupViews() {
         tableView.delegate = self
         tableView.dataSource = self
-
+        tableView.separatorColor = .white
+        tableView.backgroundColor = .white
         tableView.register(models: [WeatherListHeaderCellModel.self])
 
         tableView.register(
