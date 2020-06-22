@@ -44,14 +44,24 @@ enum Strings {
     }
 
     enum CitySearchAlertText {
+        static let textFieldPlaceholder = "Например: Москва"
         static let title = "Введите название города"
         //static let message = "Необходимо подтвердить"
         static let goToForecast = "К погоде!"
         static let cancel = "Отмена"
+        static let toMainScreen = "Главный экран"
     }
     enum CityNotFoundAlertText {
         static let title = "Город не найден"
         static let message = "Попробуйте повторно"
         static let okGo = "ОК"
+    }
+
+    enum SystemIconName {
+        static let lineHorizontalThree = "line.horizontal.3"
+        static let escape = "escape"
+        static let info = "info"
+        static let infoCircle = "info.circle"
+        static let arrowCirclePath = "arrow.2.circlepath"
     }
 }

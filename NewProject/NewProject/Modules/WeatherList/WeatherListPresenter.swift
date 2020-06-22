@@ -40,27 +40,31 @@ class WeatherListPresenter {
     func viewDidLoad() {
 
         //settingsStorage.coordinates = LocationCoordinate(lat: <#T##Double#>, lon: <#T##Double#>)
+        print(coordinates)
         if let coordinates = self.coordinates {
+            print(coordinates)
+            loadWeather(city: nil, coord: coordinates)
         } else if let cityName = self.cityName {
+            loadWeather(city: cityName, coord: nil)
         } else {
             assertionFailure("Coordinations or city name must be not nil")
         }
-
-        loadWeather(city: cityName!)
     }
 }
 
 extension WeatherListPresenter {
 
-    func loadWeather(city: String) {
-        weatherAPI.loadWeather(by: city) { [weak self] result in
+    func loadWeather(city: String?, coord: LocationCoordinate?) {
+        weatherAPI.loadWeather(
+        byCityName: city,
+        byCoordination: coord
+        ) { [weak self] result in
 
             switch result {
             case .success(let responseDTO):
                 for element in responseDTO.list {
                     let testDate = element.dateText.toDate()
                     //let helpDate = DateInRegion().dateAt(.endOfDay)
-
                     //if testDate?.isToday ?? true {
                     self!.weatherArray.append(Weather(
                         temperatureToday: element.main.temp,
@@ -103,7 +107,6 @@ extension WeatherListPresenter {
             title: Strings.CityNotFoundAlertText.okGo,
             style: .default,
             handler: { _ in
-                
                 self.showCitySelect()
         }
             ))
@@ -117,23 +120,30 @@ extension WeatherListPresenter {
             preferredStyle: .alert
         )
         alert.addTextField { textField in
-            textField.placeholder = "Введите город"
+            textField.placeholder = Strings.CitySearchAlertText.textFieldPlaceholder
         }
 
         alert.addAction(UIAlertAction(
             title: Strings.CitySearchAlertText.goToForecast,
             style: .default,
             handler: { _ in
-                let textField = alert.textFields?.first?.text
-
-                self.loadWeather(city: textField ?? "")
+                guard let textField = alert.textFields?.first?.text else {
+                    self.showCitySelect()
+                    return
+                }
+                if textField.isEmpty {
+                    self.showCitySelect()
+                }
+                self.loadWeather(city: textField, coord: nil)
         }
         ))
 
         alert.addAction(UIAlertAction(
-            title: Strings.CitySearchAlertText.cancel,
-            style: .cancel,
-            handler: nil
+            title: Strings.CitySearchAlertText.toMainScreen,
+            style: .default,
+            handler: { _ in
+                self.router.backToMainScreen()
+        }
         ))
         self.view?.present(alert, animated: true)
     }

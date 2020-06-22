@@ -14,4 +14,8 @@ import UIKit
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
+
+    func backToMainScreen() {
+        navigationController.dismiss(animated: true, completion: nil)
+    }
  }

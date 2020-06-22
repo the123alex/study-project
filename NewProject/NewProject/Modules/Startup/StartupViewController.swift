@@ -18,7 +18,6 @@ class StartupViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var showWeather: UIButton!
     @IBOutlet weak var aboutButton: UIButton!
-    @IBOutlet weak var blurView: UIView!
     @IBOutlet weak var sunView: UIView!
 
     override func viewDidLoad() {

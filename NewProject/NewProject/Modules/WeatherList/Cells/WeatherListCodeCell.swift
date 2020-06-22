@@ -25,6 +25,7 @@ class WeatherListCodeCell: UITableViewCell {
         label.textAlignment = .center
         return label
     }()
+
     let iconImageView = UIImageView()
 
     let temperatureValueLabel: UILabel = {

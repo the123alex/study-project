@@ -10,7 +10,8 @@ import Foundation
 
 protocol WeatherAPIProtocol {
     func loadWeather(
-        by cityName: String,
+        byCityName: String?,
+        byCoordination: LocationCoordinate?,
         completion: @escaping (
         Result<WeatherResponseDTO, NetworkError>) -> Void
     )
@@ -18,11 +19,12 @@ protocol WeatherAPIProtocol {
 
 class WeatherAPIMock: WeatherAPIProtocol {
     func loadWeather(
-        by cityName: String,
+        byCityName: String?,
+        byCoordination: LocationCoordinate?,
         completion: @escaping (
             Result<WeatherResponseDTO, NetworkError>
             ) -> Void
-    ) {}
+        ) {}
 }
 
 class WeatherAPI: WeatherAPIProtocol {
@@ -38,22 +40,37 @@ class WeatherAPI: WeatherAPIProtocol {
     }
 
     func loadWeather(
-        by cityName: String,
+        byCityName: String?,
+        byCoordination: LocationCoordinate?,
         completion: @escaping (
-        Result<WeatherResponseDTO, NetworkError>
-        ) -> Void
-    ) {
+            Result<WeatherResponseDTO, NetworkError>
+            ) -> Void
+        ) {
+        var params = [String: [String]]()
+        if byCityName != nil {
+            params = [
+                "q": [byCityName ?? ""],
+                "units": ["metric"],
+                "lang": ["ru"],
+                "appid": ["0e09e2d025867d8ce34fc90927b5c5a8"]
+            ]
+        } else if byCoordination != nil {
+            //swiftlint:disable force_unwrapping
+            params = [
+                "lat": [(String(describing: byCoordination!.lat))],
+                "lon": [(String(describing: byCoordination!.lon))],
+                "units": ["metric"],
+                "lang": ["ru"],
+                "appid": ["0e09e2d025867d8ce34fc90927b5c5a8"]
+            ]
+        }
+
         let requestPrototype = NetworkRequestPrototype(
             method: .get,
             endpoint: .weather,
             path: "/data/2.5/forecast",
             headers: [:],
-            queryParams: [
-                "q": [cityName],
-                "units": ["metric"],
-                "lang": ["ru"],
-                "appid": ["0e09e2d025867d8ce34fc90927b5c5a8"]
-            ]
+            queryParams: params
         )
         network.performRequest(
             requestPrototype,

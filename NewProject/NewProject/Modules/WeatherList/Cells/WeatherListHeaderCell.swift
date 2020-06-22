@@ -36,6 +36,23 @@ class WeatherListHeaderCell: UITableViewCell {
 
     let iconImageView = UIImageView()
 
+    let changeCityButton: UIButton = {
+        let button = UIButton()
+        button.tintColor = .black
+        let imageView = UIImageView()
+        imageView.image = .actions
+        //let image = UIImage(systemName: Strings.SystemIconName.arrowCirclePath)
+        //image?.alignmentRectInsets
+        //button.setBackgroundImage(UIImage(systemName: Strings.SystemIconName.arrowCirclePath), for: .normal)
+        //button.setImage(UIImage(systemName: Strings.SystemIconName.arrowCirclePath), for: .normal)
+        //button.setImage(imageView.image, for: .normal)
+
+       // button.setBackgroundImage(imageView.image, for: .normal)
+        button.setBackgroundImage(UIImage(systemName: Strings.SystemIconName.lineHorizontalThree), for: .normal)
+
+        return button
+    }()
+
     let temperatureValueLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 50, weight: .regular)
@@ -85,6 +102,7 @@ private extension WeatherListHeaderCell {
 
         contentView.addSubview(helpView)
         helpView.addSubview(currentCityName)
+        helpView.addSubview(changeCityButton)
         helpView.addSubview(weatherDescriptionLabel)
         helpView.addSubview(iconImageView)
         helpView.addSubview(temperatureValueLabel)
@@ -106,6 +124,10 @@ private extension WeatherListHeaderCell {
             make.centerX.equalToSuperview()
             make.bottom.equalTo(weatherDescriptionLabel.snp.top).inset(-3)
         }
+        changeCityButton.snp.makeConstraints { make in
+            make.height.width.equalTo(32)
+            make.top.trailing.equalToSuperview().inset(25)
+        }
 
         weatherDescriptionLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -115,12 +137,6 @@ private extension WeatherListHeaderCell {
         iconImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.bottom.equalTo(temperatureValueLabel.snp.top).inset(-10)
-          //  make.leading.trailing.equalToSuperview().inset(50)
-           // make.width.greaterThanOrEqualToSuperview().inset(30)
-            //make.height.greaterThanOrEqualTo(200)
-//            make.width.equalTo(275)
-           // make.height.equalTo(360)
-            //make.height.lessThanOrEqualTo(400)
         }
 
         temperatureValueLabel.snp.makeConstraints { make in

@@ -7,6 +7,7 @@
 //
 
 //swiftlint:disable closure_end_indentation
+
 import UIKit
 
  class StartupRouter {
@@ -23,16 +24,20 @@ import UIKit
             preferredStyle: .alert
         )
         alert.addTextField { textField in
-            textField.placeholder = "Enter First Name"
+            textField.placeholder = Strings.CitySearchAlertText.textFieldPlaceholder
         }
 
         alert.addAction(UIAlertAction(
             title: Strings.CitySearchAlertText.goToForecast,
             style: .default,
             handler: { _ in
-                //print(textField?.first?.text)
-                let textField = alert.textFields?.first?.text
+                guard let textField = alert.textFields?.first?.text else {
+                    return
+                }
 
+                if textField.isEmpty {
+                    self.showCitySelect()
+                }
                 self.showWeatherList(cityName: textField, coordinates: nil)
         }
         ))
