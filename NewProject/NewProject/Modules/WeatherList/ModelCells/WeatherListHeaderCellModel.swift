@@ -6,6 +6,7 @@
 //  Copyright © 2020 Aleksey Mikhlev. All rights reserved.
 //
 
+import SwiftDate
 import UIKit
 
 struct WeatherListHeaderCellModel: PTableViewCellModel {
@@ -15,6 +16,8 @@ struct WeatherListHeaderCellModel: PTableViewCellModel {
     let currentCityNameText: String
     let tommorowDescriptionText: String
     let tommorowTemperatureValueText: String
+    let time: String
+    var weatherTom: String = ""
 
     init(weather: Weather) {
         switch weather.weatherDescription {
@@ -65,14 +68,45 @@ struct WeatherListHeaderCellModel: PTableViewCellModel {
 
         currentCityNameText = weather.currentCityName
         tommorowDescriptionText = Strings.WeatherListDescription.descriptionTommorow
+        time = weather.date.toDate()?.toFormat("на HH:mm, ") ?? ""
+
+        weatherTom = testWeatherTomorrow(weather: weather.tomorrowWeatherDescription)
     }
 
     func configure(cell: WeatherListHeaderCell) {
         cell.currentCityName.text = currentCityNameText
         cell.iconImageView.image = weatherImage
         cell.temperatureValueLabel.text = temperatureValueText
-        cell.tommorowDescriptionLabel.text = tommorowDescriptionText
+        cell.tommorowDescriptionLabel.text = tommorowDescriptionText + " " + weatherTom.lowercased()
         cell.tommorowTemperatureValueLabel.text = tommorowTemperatureValueText
-        cell.weatherDescriptionLabel.text = weatherDescriptionText
+        cell.weatherDescriptionLabel.text = time + weatherDescriptionText
+    }
+
+    func testWeatherTomorrow(weather: String) -> String {
+        switch weather {
+        case Strings.WeatherListResponse.clear.rawValue:
+            return Strings.WeatherListDescription.clear
+
+        case Strings.WeatherListResponse.clouds.rawValue:
+            return Strings.WeatherListDescription.clouds
+
+        case Strings.WeatherListResponse.rain.rawValue:
+           return  Strings.WeatherListDescription.rain
+
+        case Strings.WeatherListResponse.drizzle.rawValue:
+            return Strings.WeatherListDescription.drizzle
+
+        case Strings.WeatherListResponse.snow.rawValue:
+            return Strings.WeatherListDescription.snow
+
+        case Strings.WeatherListResponse.thunderstorm.rawValue:
+            return Strings.WeatherListDescription.thunderstorm
+
+        case Strings.WeatherListResponse.atmosphere.rawValue:
+            return Strings.WeatherListDescription.atmosphere
+
+        default:
+            return Strings.WeatherListDescription.clear
+        }
     }
 }

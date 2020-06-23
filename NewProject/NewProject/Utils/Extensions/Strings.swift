@@ -12,8 +12,8 @@ enum Strings {
     enum Startup {
         static let title = "WHAT THE FORECAST?"
         static let description = "Какой прогноз?"
-        static let firstButtonTitle = "город"
-        static let secondButonTitle = "геолокация"
+        static let firstButtonTitle = "ГОРОД"
+        static let secondButonTitle = "ЛОКАЦИЯ"
     }
     enum WeatherListResponse: String {
         case thunderstorm = "Thunderstorm"
@@ -32,7 +32,7 @@ enum Strings {
         static let snow = "Снег"
         static let atmosphere = "Туман"
         static let clear = "Чистое небо"
-        static let clouds = "Облака"
+        static let clouds = "Облачно"
 
         static let descriptionTommorow = "Завтра"
     }
@@ -62,5 +62,29 @@ enum Strings {
         static let info = "info"
         static let infoCircle = "info.circle"
         static let arrowCirclePath = "arrow.2.circlepath"
+    }
+
+   enum WeekDaysByNumber: Int {
+        case sunday = 1
+        case monday = 2
+        case tuesday = 3
+        case wednesday = 4
+        case thursday = 5
+        case friday = 6
+        case saturday = 7
+
+        case unknown = 0
+    }
+
+    enum WeekdayByName {
+        static let sunday = "Воскресенье"
+        static let monday = "Понедельник"
+        static let tuesday = "Вторник"
+        static let wednesday = "Среда"
+        static let thursday = "Четверг"
+        static let friday = "Пятница"
+        static let saturday = "Суббота"
+
+        static let unknown = ""
     }
 }

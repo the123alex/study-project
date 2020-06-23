@@ -12,60 +12,30 @@ class WeatherListCodeCell: UITableViewCell {
 
     let dateLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         label.textColor = .black
+        label.textAlignment = .left
+
         return label
     }()
 
-    let precipitationDescriptionLabel: UILabel = {
+    let weatherDescriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = .black
-        label.numberOfLines = 0
-        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        label.textColor = .darkGray
+        label.textAlignment = .right
+
         return label
     }()
-
-    let iconImageView = UIImageView()
 
     let temperatureValueLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         label.textColor = .gray
-        return label
-    }()
-    let precipitationValueLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
-        label.textColor = .gray
+        label.textAlignment = .right
 
         return label
     }()
-    let imageStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.distribution = .fill
-        stackView.alignment = .center
-        stackView.axis = .vertical
-        stackView.spacing = 10
-
-        return stackView
-    }()
-
-    let precipitationStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.distribution = .equalCentering
-        stackView.alignment = .center
-        stackView.axis = .vertical
-
-        return stackView
-    }()
-
-    private func makeGrayLabel() -> UILabel {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
-        label.textColor = .lightGray
-        return label
-    }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -81,15 +51,10 @@ class WeatherListCodeCell: UITableViewCell {
     private func setupViews() {
         contentView.addSubviews(
             dateLabel,
-            imageStackView,
-            precipitationStackView
+            weatherDescriptionLabel,
+            temperatureValueLabel
         )
 
-        imageStackView.addArrangedSubview(iconImageView)
-        imageStackView.addArrangedSubview(temperatureValueLabel)
-
-        precipitationStackView.addArrangedSubview(precipitationDescriptionLabel)
-        precipitationStackView.addArrangedSubview(precipitationValueLabel)
         backgroundColor = .white
         selectionStyle = .none
     }
@@ -97,22 +62,20 @@ class WeatherListCodeCell: UITableViewCell {
     private func makeConstraints() {
         dateLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(15)
-            make.centerY.equalTo(imageStackView.snp.centerY)
+            make.trailing.greaterThanOrEqualTo(weatherDescriptionLabel.snp.leading).inset(-10)
+            make.centerY.equalTo(weatherDescriptionLabel.snp.centerY)
         }
 
-        iconImageView.snp.makeConstraints { make in
-            make.width.height.equalTo(60)
+        weatherDescriptionLabel.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview().inset(5)
+            make.trailing.equalTo(temperatureValueLabel.snp.leading).inset(-10)
+            make.centerX.equalToSuperview()
         }
 
-        imageStackView.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview()
-            make.leading.equalTo(dateLabel.snp.trailing).inset(-30)
-        }
-
-        precipitationStackView.snp.makeConstraints { make in
-            make.leading.equalTo(imageStackView.snp.trailing).inset(-50)
-            make.centerY.equalTo(imageStackView.snp.centerY)
-            make.trailing.equalToSuperview().inset(10)
+        temperatureValueLabel.snp.makeConstraints { make in
+            make.width.lessThanOrEqualTo(70)
+            make.centerY.equalTo(weatherDescriptionLabel.snp.centerY)
+            make.trailing.equalToSuperview().inset(15)
         }
     }
 }

@@ -10,9 +10,10 @@ import Foundation
 import SwiftDate
 
 struct Weather {
-    let temperatureToday: Double
-    let temperatureTommorow: Double
+    var temperatureToday: Double
+    var temperatureTommorow: Double
     let weatherDescription: String
-    //let date: DateInRegion
+    var tomorrowWeatherDescription: String
+    var date: String
     let currentCityName: String
 }

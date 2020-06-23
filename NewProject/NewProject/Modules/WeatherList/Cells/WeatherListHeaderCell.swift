@@ -11,7 +11,7 @@ import SnapKit
 import UIKit
 
 class WeatherListHeaderCell: UITableViewCell {
-
+    let test = WeatherListViewController()
     let helpView: UIView = {
         let view = UIView()
 
@@ -38,7 +38,7 @@ class WeatherListHeaderCell: UITableViewCell {
 
     let iconImageView = UIImageView()
 
-    let changeCityButton: UIButton = {
+    var changeCityButton: UIButton = {
         let button = UIButton()
         button.tintColor = .black
 
@@ -100,8 +100,8 @@ private extension WeatherListHeaderCell {
             tommorowDescriptionLabel,
             tommorowTemperatureValueLabel
         )
-
-        changeCityButton.addTarget(self, action: #selector(self.buttonAction(sender:)), for: .touchUpInside)
+        print(changeCityButton)
+       // changeCityButton.addTarget(WeatherListPresenter.self, action: #selector(WeatherListPresenter.testTap(sender: )), for: .touchUpInside)
 
         backgroundColor = .white
         selectionStyle = .none
@@ -151,8 +151,5 @@ private extension WeatherListHeaderCell {
     }
 
     @objc func buttonAction(sender: UIButton) {
-        print(1)
-//        let vc1 = WeatherListViewController()
-//        vc1.presenter.showCitySelect()
     }
 }

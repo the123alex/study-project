@@ -7,6 +7,8 @@
 //
 //swiftlint:disable force_unwrapping
 //swiftlint:disable closure_end_indentation
+//swiftlint:disable attributes
+//swiftlint:disable implicitly_unwrapped_optional
 
 import Foundation
 import SwiftDate
@@ -20,6 +22,8 @@ class WeatherListPresenter {
     let coordinates: LocationCoordinate?
     //private let settingsStorage: SettingsStorage
     var weatherArray: [Weather] = []
+    var weekArray: [Weather] = []
+    var finalTodayWeather: Weather?
 
     init(
         view: WeatherListViewController,
@@ -60,23 +64,15 @@ extension WeatherListPresenter {
 
             switch result {
             case .success(let responseDTO):
-                for element in responseDTO.list {
-                    let testDate = element.dateText.toDate()
-                    //let helpDate = DateInRegion().dateAt(.endOfDay)
-                    //if testDate?.isToday ?? true {
-                    self!.weatherArray.append(Weather(
-                        temperatureToday: element.main.temp,
-                        temperatureTommorow: element.main.temp,
-                        weatherDescription: element.weather[0].main,
-                        currentCityName: responseDTO.city.name
-                    ))
-                    //}
-                }
+                self!.decodeWeekDays(responseForDecode: responseDTO)
+
                 var cellModels: [PTableViewCellAnyModel] = []
-                cellModels.append(WeatherListHeaderCellModel(weather: self!.weatherArray[0]))
-        //                for index in 1 ..< weatherArray.count {
-        //                    cellModels.append(WeatherListCodeCellModel(weather: weatherArray[index]))
-        //                }
+                cellModels.append(WeatherListHeaderCellModel(weather: self!.finalTodayWeather!))
+
+                self?.weekArray.forEach({ element in
+                    cellModels.append(WeatherListCodeCellModel(weather: element))
+                })
+
                 self!.view?.showData(with: cellModels)
             case .failure(let error):
                 switch error {
@@ -88,6 +84,55 @@ extension WeatherListPresenter {
                 print(result)
                 print(error.localizedDescription)
             }
+        }
+    }
+}
+extension WeatherListPresenter {
+    func decodeWeekDays(responseForDecode: WeatherResponseDTO) {
+        var tomorrowTempDay: Double = 0.0
+        var tomorrowWeatherDescription: String = ""
+        var tomorrowDateText: String = ""
+        var tomorrowTempMidnight: Double = 0.0
+
+        for element in responseForDecode.list {
+            let testDate = element.dateText.toDate()
+
+            if testDate!.isToday {
+                self.weatherArray.append(Weather(
+                    temperatureToday: element.main.temp,
+                    temperatureTommorow: element.main.temp,
+                    weatherDescription: element.weather[0].main,
+                    tomorrowWeatherDescription: "",
+                    date: element.dateText,
+                    currentCityName: responseForDecode.city.name
+                ))
+            } else if !testDate!.isTomorrow && testDate!.isInFuture && testDate!.hour == 15 {
+                self.weekArray.append(Weather(
+                    temperatureToday: element.main.temp,
+                    temperatureTommorow: element.main.temp,
+                    weatherDescription: element.weather[0].main,
+                    tomorrowWeatherDescription: "",
+                    date: element.dateText,
+                    currentCityName: responseForDecode.city.name
+                ))
+            } else if testDate!.isTomorrow && testDate!.hour == 15 {
+                tomorrowWeatherDescription = element.weather[0].main
+                tomorrowTempDay = element.main.temp
+            } else if testDate!.isTomorrow && testDate!.hour == 0 {
+                tomorrowTempMidnight = element.main.temp
+                tomorrowDateText = element.dateText
+            }
+        }
+
+        if self.weatherArray.count == 1 {
+            self.finalTodayWeather = weatherArray[0]
+            self.finalTodayWeather!.temperatureTommorow = tomorrowTempDay
+            self.finalTodayWeather!.temperatureToday = tomorrowTempMidnight
+            self.finalTodayWeather!.date = tomorrowDateText
+            self.finalTodayWeather?.tomorrowWeatherDescription = tomorrowWeatherDescription
+        } else {
+            self.finalTodayWeather = weatherArray[1]
+            self.finalTodayWeather!.temperatureTommorow = tomorrowTempDay
         }
     }
 }
@@ -144,5 +189,8 @@ extension WeatherListPresenter {
         }
         ))
         self.view?.present(alert, animated: true)
+    }
+    @objc func testTap(sender: UIButton!) {
+        print(2)
     }
 }
