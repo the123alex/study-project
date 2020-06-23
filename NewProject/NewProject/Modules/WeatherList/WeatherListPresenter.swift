@@ -126,13 +126,14 @@ extension WeatherListPresenter {
 
         if self.weatherArray.count == 1 {
             self.finalTodayWeather = weatherArray[0]
-            self.finalTodayWeather!.temperatureTommorow = tomorrowTempDay
-            self.finalTodayWeather!.temperatureToday = tomorrowTempMidnight
-            self.finalTodayWeather!.date = tomorrowDateText
+            self.finalTodayWeather?.temperatureTommorow = tomorrowTempDay
+            self.finalTodayWeather?.temperatureToday = tomorrowTempMidnight
+            self.finalTodayWeather?.date = tomorrowDateText
             self.finalTodayWeather?.tomorrowWeatherDescription = tomorrowWeatherDescription
         } else {
             self.finalTodayWeather = weatherArray[1]
-            self.finalTodayWeather!.temperatureTommorow = tomorrowTempDay
+            self.finalTodayWeather?.tomorrowWeatherDescription = tomorrowWeatherDescription
+            self.finalTodayWeather?.temperatureTommorow = tomorrowTempDay
         }
     }
 }
