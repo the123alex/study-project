@@ -47,22 +47,18 @@ class WeatherAPI: WeatherAPIProtocol {
             ) -> Void
         ) {
         var params = [String: [String]]()
+        params = [
+        "units": ["metric"],
+        "lang": ["ru"],
+        "appid": ["0e09e2d025867d8ce34fc90927b5c5a8"]
+        ]
+
         if byCityName != nil {
-            params = [
-                "q": [byCityName ?? ""],
-                "units": ["metric"],
-                "lang": ["ru"],
-                "appid": ["0e09e2d025867d8ce34fc90927b5c5a8"]
-            ]
+            params.updateValue([byCityName ?? ""], forKey: "q")
         } else if byCoordination != nil {
             //swiftlint:disable force_unwrapping
-            params = [
-                "lat": [(String(describing: byCoordination!.lat))],
-                "lon": [(String(describing: byCoordination!.lon))],
-                "units": ["metric"],
-                "lang": ["ru"],
-                "appid": ["0e09e2d025867d8ce34fc90927b5c5a8"]
-            ]
+            params.updateValue([(String(describing: byCoordination!.lat))], forKey: "lat")
+            params.updateValue([(String(describing: byCoordination!.lon))], forKey: "lon")
         }
 
         let requestPrototype = NetworkRequestPrototype(

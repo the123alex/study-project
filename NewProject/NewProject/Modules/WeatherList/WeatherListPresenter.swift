@@ -18,7 +18,7 @@ class WeatherListPresenter {
     private let weatherAPI: WeatherAPI
     let cityName: String?
     let coordinates: LocationCoordinate?
-    private let settingsStorage: SettingsStorage
+    //private let settingsStorage: SettingsStorage
     var weatherArray: [Weather] = []
 
     init(
@@ -26,23 +26,21 @@ class WeatherListPresenter {
         router: WeatherListRouter,
         weatherAPI: WeatherAPI,
         cityName: String?,
-        coordinates: LocationCoordinate?,
-        settingsStorage: SettingsStorage
+        coordinates: LocationCoordinate?
+        //settingsStorage: SettingsStorage
     ) {
         self.view = view
         self.router = router
         self.weatherAPI = weatherAPI
         self.cityName = cityName
         self.coordinates = coordinates
-        self.settingsStorage = settingsStorage
+        //self.settingsStorage = settingsStorage
     }
 
     func viewDidLoad() {
 
         //settingsStorage.coordinates = LocationCoordinate(lat: <#T##Double#>, lon: <#T##Double#>)
-        print(coordinates)
         if let coordinates = self.coordinates {
-            print(coordinates)
             loadWeather(city: nil, coord: coordinates)
         } else if let cityName = self.cityName {
             loadWeather(city: cityName, coord: nil)

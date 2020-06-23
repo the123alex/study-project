@@ -12,8 +12,8 @@ enum Strings {
     enum Startup {
         static let title = "WHAT THE FORECAST?"
         static let description = "Какой прогноз?"
-        static let firstButtonTitle = "Погода по городу"
-        static let secondButonTitle = "Погода по геолокации"
+        static let firstButtonTitle = "город"
+        static let secondButonTitle = "геолокация"
     }
     enum WeatherListResponse: String {
         case thunderstorm = "Thunderstorm"
@@ -46,7 +46,6 @@ enum Strings {
     enum CitySearchAlertText {
         static let textFieldPlaceholder = "Например: Москва"
         static let title = "Введите название города"
-        //static let message = "Необходимо подтвердить"
         static let goToForecast = "К погоде!"
         static let cancel = "Отмена"
         static let toMainScreen = "Главный экран"

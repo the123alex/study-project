@@ -37,11 +37,10 @@ import UIKit
             router: router,
             weatherAPI: WeatherAPI(network: NetworkProvider()),
             cityName: cityName,
-            coordinates: coordinates,
-            settingsStorage: UserDefaults.standard
+            coordinates: coordinates
+            //settingsStorage: UserDefaults.standard
         )
         viewController.presenter = presenter
-
         return viewController
     }
  }

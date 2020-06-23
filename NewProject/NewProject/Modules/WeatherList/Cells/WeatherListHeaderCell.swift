@@ -6,6 +6,7 @@
 //  Copyright © 2020 Aleksey Mikhlev. All rights reserved.
 //
 //swiftlint:disable attributes
+
 import SnapKit
 import UIKit
 
@@ -13,7 +14,6 @@ class WeatherListHeaderCell: UITableViewCell {
 
     let helpView: UIView = {
         let view = UIView()
-        //view.backgroundColor = .red
 
         return view
     }()
@@ -22,6 +22,8 @@ class WeatherListHeaderCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 45, weight: .light)
         label.textColor = .darkGray
+        label.adjustsFontSizeToFitWidth = true
+        label.baselineAdjustment = .alignBaselines
 
         return label
     }()
@@ -39,16 +41,9 @@ class WeatherListHeaderCell: UITableViewCell {
     let changeCityButton: UIButton = {
         let button = UIButton()
         button.tintColor = .black
-        let imageView = UIImageView()
-        imageView.image = .actions
-        //let image = UIImage(systemName: Strings.SystemIconName.arrowCirclePath)
-        //image?.alignmentRectInsets
-        //button.setBackgroundImage(UIImage(systemName: Strings.SystemIconName.arrowCirclePath), for: .normal)
-        //button.setImage(UIImage(systemName: Strings.SystemIconName.arrowCirclePath), for: .normal)
-        //button.setImage(imageView.image, for: .normal)
 
-       // button.setBackgroundImage(imageView.image, for: .normal)
-        button.setBackgroundImage(UIImage(systemName: Strings.SystemIconName.lineHorizontalThree), for: .normal)
+        let image = UIImage(systemName: Strings.SystemIconName.lineHorizontalThree)
+        button.setBackgroundImage(image, for: .normal)
 
         return button
     }()
@@ -66,6 +61,7 @@ class WeatherListHeaderCell: UITableViewCell {
         label.font = UIFont.systemFont(ofSize: 24, weight: .thin)
         label.textColor = .gray
         label.textAlignment = .center
+
         return label
     }()
 
@@ -93,21 +89,19 @@ class WeatherListHeaderCell: UITableViewCell {
 private extension WeatherListHeaderCell {
     func setupViews() {
 
-//        contentView.addSubview(currentCityName)
-//        contentView.addSubview(weatherDescriptionLabel)
-//        contentView.addSubview(iconImageView)
-//        contentView.addSubview(temperatureValueLabel)
-//        contentView.addSubview(tommorowDescriptionLabel)
-//        contentView.addSubview(tommorowTemperatureValueLabel)
-
         contentView.addSubview(helpView)
-        helpView.addSubview(currentCityName)
-        helpView.addSubview(changeCityButton)
-        helpView.addSubview(weatherDescriptionLabel)
-        helpView.addSubview(iconImageView)
-        helpView.addSubview(temperatureValueLabel)
-        helpView.addSubview(tommorowDescriptionLabel)
-        helpView.addSubview(tommorowTemperatureValueLabel)
+
+        helpView.addSubviews(
+            currentCityName,
+            changeCityButton,
+            weatherDescriptionLabel,
+            iconImageView,
+            temperatureValueLabel,
+            tommorowDescriptionLabel,
+            tommorowTemperatureValueLabel
+        )
+
+        changeCityButton.addTarget(self, action: #selector(self.buttonAction(sender:)), for: .touchUpInside)
 
         backgroundColor = .white
         selectionStyle = .none
@@ -122,6 +116,7 @@ private extension WeatherListHeaderCell {
         currentCityName.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(15)
             make.centerX.equalToSuperview()
+            make.trailing.lessThanOrEqualTo(changeCityButton.snp.leading).inset(-10)
             make.bottom.equalTo(weatherDescriptionLabel.snp.top).inset(-3)
         }
         changeCityButton.snp.makeConstraints { make in
@@ -154,8 +149,10 @@ private extension WeatherListHeaderCell {
             make.bottom.equalToSuperview().inset(20)
         }
     }
-//swiftlint:disable implicitly_unwrapped_optional
-    @objc func buttonAction(sender: UIButton!) {
-         print("Button Clicked")
+
+    @objc func buttonAction(sender: UIButton) {
+        print(1)
+//        let vc1 = WeatherListViewController()
+//        vc1.presenter.showCitySelect()
     }
 }
