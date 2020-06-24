@@ -95,13 +95,13 @@ extension WeatherListPresenter {
         var tomorrowTempMidnight: Double = 0.0
 
         for element in responseForDecode.list {
-            let testDate = element.dateText.toDate()
-
+            let testDate = element.dateText.toDate()?.convertTo(region: .local)
             if testDate!.isToday {
                 self.weatherArray.append(Weather(
                     temperatureToday: element.main.temp,
                     temperatureTommorow: element.main.temp,
-                    weatherDescription: element.weather[0].main,
+                    weatherDescriptionMain: element.weather[0].main,
+                    weatherDescriptionText: element.weather[0].description,
                     tomorrowWeatherDescription: "",
                     date: element.dateText,
                     currentCityName: responseForDecode.city.name
@@ -110,13 +110,14 @@ extension WeatherListPresenter {
                 self.weekArray.append(Weather(
                     temperatureToday: element.main.temp,
                     temperatureTommorow: element.main.temp,
-                    weatherDescription: element.weather[0].main,
+                    weatherDescriptionMain: element.weather[0].main,
+                    weatherDescriptionText: element.weather[0].description,
                     tomorrowWeatherDescription: "",
                     date: element.dateText,
                     currentCityName: responseForDecode.city.name
                 ))
             } else if testDate!.isTomorrow && testDate!.hour == 15 {
-                tomorrowWeatherDescription = element.weather[0].main
+                tomorrowWeatherDescription = element.weather[0].description
                 tomorrowTempDay = element.main.temp
             } else if testDate!.isTomorrow && testDate!.hour == 0 {
                 tomorrowTempMidnight = element.main.temp
@@ -131,6 +132,7 @@ extension WeatherListPresenter {
             self.finalTodayWeather?.date = tomorrowDateText
             self.finalTodayWeather?.tomorrowWeatherDescription = tomorrowWeatherDescription
         } else {
+            print(weatherArray)
             self.finalTodayWeather = weatherArray[1]
             self.finalTodayWeather?.tomorrowWeatherDescription = tomorrowWeatherDescription
             self.finalTodayWeather?.temperatureTommorow = tomorrowTempDay

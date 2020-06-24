@@ -14,44 +14,36 @@ struct WeatherListHeaderCellModel: PTableViewCellModel {
     let temperatureValueText: String
     let weatherDescriptionText: String
     let currentCityNameText: String
-    let tommorowDescriptionText: String
+    let tommorowWordText: String
     let tommorowTemperatureValueText: String
     let time: String
     var weatherTom: String = ""
 
     init(weather: Weather) {
-        switch weather.weatherDescription {
+        switch weather.weatherDescriptionMain {
         case Strings.WeatherListResponse.clear.rawValue:
             weatherImage = #imageLiteral(resourceName: "Clear w 275")
-            weatherDescriptionText = Strings.WeatherListDescription.clear
 
         case Strings.WeatherListResponse.clouds.rawValue:
             weatherImage = #imageLiteral(resourceName: "Clouds w 275_1")
-            weatherDescriptionText = Strings.WeatherListDescription.clouds
 
         case Strings.WeatherListResponse.rain.rawValue:
             weatherImage = #imageLiteral(resourceName: "rain")
-            weatherDescriptionText = Strings.WeatherListDescription.rain
 
         case Strings.WeatherListResponse.drizzle.rawValue:
             weatherImage = #imageLiteral(resourceName: "drizzle")
-            weatherDescriptionText = Strings.WeatherListDescription.drizzle
 
         case Strings.WeatherListResponse.snow.rawValue:
             weatherImage = #imageLiteral(resourceName: "snow")
-            weatherDescriptionText = Strings.WeatherListDescription.snow
 
         case Strings.WeatherListResponse.thunderstorm.rawValue:
-            weatherImage = #imageLiteral(resourceName: "rain")
-            weatherDescriptionText = Strings.WeatherListDescription.thunderstorm
+            weatherImage = #imageLiteral(resourceName: "thunderstorm")
 
         case Strings.WeatherListResponse.atmosphere.rawValue:
             weatherImage = #imageLiteral(resourceName: "atmosphere")
-            weatherDescriptionText = Strings.WeatherListDescription.atmosphere
 
         default:
             weatherImage = #imageLiteral(resourceName: "Clear w 275")
-            weatherDescriptionText = Strings.WeatherListDescription.clear
         }
 
         if weather.temperatureToday.isLess(than: 0) {
@@ -67,46 +59,19 @@ struct WeatherListHeaderCellModel: PTableViewCellModel {
         }
 
         currentCityNameText = weather.currentCityName
-        tommorowDescriptionText = Strings.WeatherListDescription.descriptionTommorow
-        time = weather.date.toDate()?.toFormat("на HH:mm, ") ?? ""
+        tommorowWordText = Strings.WeatherListDescription.tomorrowWord
+        time = weather.date.toDate()?.toFormat("на HH:mm ") ?? ""
 
-        weatherTom = testWeatherTomorrow(weather: weather.tomorrowWeatherDescription)
+        weatherTom = weather.tomorrowWeatherDescription.lowercased()
+        weatherDescriptionText = weather.weatherDescriptionText.lowercased()
     }
 
     func configure(cell: WeatherListHeaderCell) {
         cell.currentCityName.text = currentCityNameText
         cell.iconImageView.image = weatherImage
         cell.temperatureValueLabel.text = temperatureValueText
-        cell.tommorowDescriptionLabel.text = tommorowDescriptionText + " " + weatherTom.lowercased()
+        cell.tommorowDescriptionLabel.text = tommorowWordText + " " + weatherTom.lowercased()
         cell.tommorowTemperatureValueLabel.text = tommorowTemperatureValueText
         cell.weatherDescriptionLabel.text = time + weatherDescriptionText
-    }
-
-    func testWeatherTomorrow(weather: String) -> String {
-        switch weather {
-        case Strings.WeatherListResponse.clear.rawValue:
-            return Strings.WeatherListDescription.clear
-
-        case Strings.WeatherListResponse.clouds.rawValue:
-            return Strings.WeatherListDescription.clouds
-
-        case Strings.WeatherListResponse.rain.rawValue:
-           return  Strings.WeatherListDescription.rain
-
-        case Strings.WeatherListResponse.drizzle.rawValue:
-            return Strings.WeatherListDescription.drizzle
-
-        case Strings.WeatherListResponse.snow.rawValue:
-            return Strings.WeatherListDescription.snow
-
-        case Strings.WeatherListResponse.thunderstorm.rawValue:
-            return Strings.WeatherListDescription.thunderstorm
-
-        case Strings.WeatherListResponse.atmosphere.rawValue:
-            return Strings.WeatherListDescription.atmosphere
-
-        default:
-            return Strings.WeatherListDescription.clear
-        }
     }
 }

@@ -16,32 +16,7 @@ struct WeatherListCodeCellModel: PTableViewCellModel {
     let weatherDescriptionText: String
 
     init(weather: Weather) {
-
-        switch weather.weatherDescription {
-        case Strings.WeatherListResponse.clear.rawValue:
-            weatherDescriptionText = Strings.WeatherListDescription.clear
-
-        case Strings.WeatherListResponse.clouds.rawValue:
-            weatherDescriptionText = Strings.WeatherListDescription.clouds
-
-        case Strings.WeatherListResponse.rain.rawValue:
-            weatherDescriptionText = Strings.WeatherListDescription.rain
-
-        case Strings.WeatherListResponse.drizzle.rawValue:
-            weatherDescriptionText = Strings.WeatherListDescription.drizzle
-
-        case Strings.WeatherListResponse.snow.rawValue:
-            weatherDescriptionText = Strings.WeatherListDescription.snow
-
-        case Strings.WeatherListResponse.thunderstorm.rawValue:
-            weatherDescriptionText = Strings.WeatherListDescription.thunderstorm
-
-        case Strings.WeatherListResponse.atmosphere.rawValue:
-            weatherDescriptionText = Strings.WeatherListDescription.atmosphere
-
-        default:
-            weatherDescriptionText = Strings.WeatherListDescription.clear
-        }
+        weatherDescriptionText = weather.weatherDescriptionText
 
         if weather.temperatureToday <= 0 {
             temperatureValueText = String(

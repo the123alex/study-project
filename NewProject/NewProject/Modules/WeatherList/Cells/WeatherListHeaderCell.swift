@@ -12,6 +12,33 @@ import UIKit
 
 class WeatherListHeaderCell: UITableViewCell {
     let test = WeatherListViewController()
+
+    let animationView: UIImageView = {
+        let imageView = UIImageView()
+        let image = UIImage(systemName: Strings.SystemIconName.arrowDown)
+
+        imageView.image = image
+        imageView.alpha = 0
+        UIView.animate(
+            withDuration: 1.25,
+            delay: 0,
+            options: [],
+            animations: {
+                imageView.alpha = 1
+            }, completion: { _ in
+                UIView.animate(
+                    withDuration: 1,
+                    delay: 0,
+                    animations: {
+                        imageView.alpha = 0
+                    }
+                )
+            }
+        )
+
+        return imageView
+    }()
+
     let helpView: UIView = {
         let view = UIView()
 
@@ -32,6 +59,8 @@ class WeatherListHeaderCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20, weight: .thin)
         label.textColor = .gray
+        label.adjustsFontSizeToFitWidth = true
+        label.baselineAdjustment = .alignBaselines
 
         return label
     }()
@@ -61,6 +90,8 @@ class WeatherListHeaderCell: UITableViewCell {
         label.font = UIFont.systemFont(ofSize: 24, weight: .thin)
         label.textColor = .gray
         label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        label.baselineAdjustment = .alignBaselines
 
         return label
     }()
@@ -92,6 +123,7 @@ private extension WeatherListHeaderCell {
         contentView.addSubview(helpView)
 
         helpView.addSubviews(
+            animationView,
             currentCityName,
             changeCityButton,
             weatherDescriptionLabel,
@@ -100,7 +132,7 @@ private extension WeatherListHeaderCell {
             tommorowDescriptionLabel,
             tommorowTemperatureValueLabel
         )
-        print(changeCityButton)
+        //print(changeCityButton)
        // changeCityButton.addTarget(WeatherListPresenter.self, action: #selector(WeatherListPresenter.testTap(sender: )), for: .touchUpInside)
 
         backgroundColor = .white
@@ -111,6 +143,11 @@ private extension WeatherListHeaderCell {
     func makeConstraints() {
         helpView.snp.makeConstraints { make in
             make.height.width.equalToSuperview()
+        }
+        animationView.snp.makeConstraints { make in
+            make.height.width.equalTo(50)
+            make.leading.equalToSuperview().inset(15)
+            make.centerY.equalTo(tommorowDescriptionLabel.snp.centerY)
         }
 
         currentCityName.snp.makeConstraints { make in
@@ -132,6 +169,7 @@ private extension WeatherListHeaderCell {
         iconImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.bottom.equalTo(temperatureValueLabel.snp.top).inset(-10)
+            make.width.lessThanOrEqualToSuperview()
         }
 
         temperatureValueLabel.snp.makeConstraints { make in
@@ -142,6 +180,7 @@ private extension WeatherListHeaderCell {
         tommorowDescriptionLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.bottom.equalTo(tommorowTemperatureValueLabel.snp.top).inset(-5)
+            make.leading.trailing.greaterThanOrEqualToSuperview().inset(10)
         }
 
         tommorowTemperatureValueLabel.snp.makeConstraints { make in

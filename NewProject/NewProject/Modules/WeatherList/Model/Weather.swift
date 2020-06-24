@@ -12,7 +12,8 @@ import SwiftDate
 struct Weather {
     var temperatureToday: Double
     var temperatureTommorow: Double
-    let weatherDescription: String
+    let weatherDescriptionMain: String
+    var weatherDescriptionText: String
     var tomorrowWeatherDescription: String
     var date: String
     let currentCityName: String

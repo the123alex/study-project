@@ -31,10 +31,10 @@ enum Strings {
         static let rain = "Дождь"
         static let snow = "Снег"
         static let atmosphere = "Туман"
-        static let clear = "Чистое небо"
+        static let clear = "Ясно"
         static let clouds = "Облачно"
 
-        static let descriptionTommorow = "Завтра"
+        static let tomorrowWord = "Завтра"
     }
     enum GeoAccess {
         static let title = "Нет доступа"
@@ -62,6 +62,8 @@ enum Strings {
         static let info = "info"
         static let infoCircle = "info.circle"
         static let arrowCirclePath = "arrow.2.circlepath"
+        static let arrowDown = "arrow.down"
+        static let arrowTriangle = "arrowtriangle.down"
     }
 
    enum WeekDaysByNumber: Int {

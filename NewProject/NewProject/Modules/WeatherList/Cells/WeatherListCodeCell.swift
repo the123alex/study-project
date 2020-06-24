@@ -12,27 +12,34 @@ class WeatherListCodeCell: UITableViewCell {
 
     let dateLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         label.textColor = .black
         label.textAlignment = .left
+        label.adjustsFontSizeToFitWidth = false
+//        label.baselineAdjustment = .alignBaselines
 
         return label
     }()
 
     let weatherDescriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         label.textColor = .darkGray
+        label.numberOfLines = 2
         label.textAlignment = .right
+        label.adjustsFontSizeToFitWidth = true
+        label.baselineAdjustment = .alignBaselines
 
         return label
     }()
 
     let temperatureValueLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         label.textColor = .gray
         label.textAlignment = .right
+//        label.adjustsFontSizeToFitWidth = true
+//        label.baselineAdjustment = .alignBaselines
 
         return label
     }()
@@ -62,18 +69,20 @@ class WeatherListCodeCell: UITableViewCell {
     private func makeConstraints() {
         dateLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(15)
-            make.trailing.greaterThanOrEqualTo(weatherDescriptionLabel.snp.leading).inset(-10)
+            make.width.greaterThanOrEqualTo(weatherDescriptionLabel.snp.width)
+
+            make.trailing.equalTo(weatherDescriptionLabel.snp.leading).inset(-5)
             make.centerY.equalTo(weatherDescriptionLabel.snp.centerY)
         }
 
         weatherDescriptionLabel.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview().inset(5)
+            make.top.bottom.equalToSuperview().inset(10)
             make.trailing.equalTo(temperatureValueLabel.snp.leading).inset(-10)
-            make.centerX.equalToSuperview()
+           // make.centerX.equalToSuperview()
         }
 
         temperatureValueLabel.snp.makeConstraints { make in
-            make.width.lessThanOrEqualTo(70)
+            make.width.equalTo(70)
             make.centerY.equalTo(weatherDescriptionLabel.snp.centerY)
             make.trailing.equalToSuperview().inset(15)
         }
