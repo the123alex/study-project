@@ -43,6 +43,7 @@ import Foundation
 
     func didTapWeatherListButton() {
         router.showCitySelect()
+        //router.showWeatherList(cityName: "moscow", coordinates: nil)
     }
 
     func didTapLocationButton() {

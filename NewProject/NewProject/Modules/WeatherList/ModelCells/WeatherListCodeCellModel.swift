@@ -5,6 +5,7 @@
 //  Created by Aleksey on 15.04.2020.
 //  Copyright © 2020 Aleksey Mikhlev. All rights reserved.
 //
+//swiftlint:disable explicit_init
 
 import SwiftDate
 import UIKit
@@ -42,34 +43,13 @@ struct WeatherListCodeCellModel: PTableViewCellModel {
     }
 
     func testWeekDay(_ day: Int?) -> String {
-        guard let testDay = day else {
-            return Strings.WeekdayByName.unknown
+        guard
+            let testDay = day,
+            let testDayTest = Strings.WeekDaysByNumber.init(rawValue: testDay)
+        else {
+            return ""
         }
 
-        switch testDay {
-        case Strings.WeekDaysByNumber.sunday.rawValue:
-            return Strings.WeekdayByName.sunday
-
-        case Strings.WeekDaysByNumber.monday.rawValue:
-            return Strings.WeekdayByName.monday
-
-        case Strings.WeekDaysByNumber.tuesday.rawValue:
-           return Strings.WeekdayByName.tuesday
-
-        case Strings.WeekDaysByNumber.wednesday.rawValue:
-           return Strings.WeekdayByName.wednesday
-
-        case Strings.WeekDaysByNumber.thursday.rawValue:
-           return Strings.WeekdayByName.thursday
-
-        case Strings.WeekDaysByNumber.friday.rawValue:
-           return Strings.WeekdayByName.friday
-
-        case Strings.WeekDaysByNumber.saturday.rawValue:
-           return Strings.WeekdayByName.saturday
-
-        default:
-            return Strings.WeekdayByName.unknown
-        }
+        return testDayTest.name
     }
 }

@@ -7,8 +7,6 @@
 //
 //swiftlint:disable force_unwrapping
 //swiftlint:disable closure_end_indentation
-//swiftlint:disable attributes
-//swiftlint:disable implicitly_unwrapped_optional
 
 import Foundation
 import SwiftDate
@@ -72,7 +70,6 @@ extension WeatherListPresenter {
                 self?.weekArray.forEach({ element in
                     cellModels.append(WeatherListCodeCellModel(weather: element))
                 })
-
                 self!.view?.showData(with: cellModels)
             case .failure(let error):
                 switch error {
@@ -93,10 +90,16 @@ extension WeatherListPresenter {
         var tomorrowWeatherDescription: String = ""
         var tomorrowDateText: String = ""
         var tomorrowTempMidnight: Double = 0.0
+        self.weekArray.removeAll()
+        self.weatherArray.removeAll()
 
         for element in responseForDecode.list {
-            let testDate = element.dateText.toDate()?.convertTo(region: .local)
-            if testDate!.isToday {
+           // let testDate = element.dateText.toDate()?.convertTo()
+            guard let testDate = element.dateText.toDate()?.convertTo() else {
+                continue
+            }
+            let date = Date().in(region: .current)
+            if testDate.day == date.day {
                 self.weatherArray.append(Weather(
                     temperatureToday: element.main.temp,
                     temperatureTommorow: element.main.temp,
@@ -106,7 +109,7 @@ extension WeatherListPresenter {
                     date: element.dateText,
                     currentCityName: responseForDecode.city.name
                 ))
-            } else if !testDate!.isTomorrow && testDate!.isInFuture && testDate!.hour == 15 {
+            } else if testDate.isInFuture && testDate.day != date.day + 1 && testDate.hour == 15 {
                 self.weekArray.append(Weather(
                     temperatureToday: element.main.temp,
                     temperatureTommorow: element.main.temp,
@@ -116,16 +119,16 @@ extension WeatherListPresenter {
                     date: element.dateText,
                     currentCityName: responseForDecode.city.name
                 ))
-            } else if testDate!.isTomorrow && testDate!.hour == 15 {
+            } else if testDate.day == date.day + 1 && testDate.hour == 15 {
                 tomorrowWeatherDescription = element.weather[0].description
                 tomorrowTempDay = element.main.temp
-            } else if testDate!.isTomorrow && testDate!.hour == 0 {
+            } else if testDate.day == date.day + 1 && testDate.hour == 0 {
                 tomorrowTempMidnight = element.main.temp
                 tomorrowDateText = element.dateText
             }
         }
-
         if self.weatherArray.count == 1 {
+            print(weatherArray)
             self.finalTodayWeather = weatherArray[0]
             self.finalTodayWeather?.temperatureTommorow = tomorrowTempDay
             self.finalTodayWeather?.temperatureToday = tomorrowTempMidnight
@@ -153,13 +156,13 @@ extension WeatherListPresenter {
             title: Strings.CityNotFoundAlertText.okGo,
             style: .default,
             handler: { _ in
-                self.showCitySelect()
+                self.showCitySelect(weatherList: false)
         }
             ))
         self.view?.present(alert, animated: true)
     }
 
-    func showCitySelect() {
+    func showCitySelect(weatherList: Bool) {
         let alert = UIAlertController(
             title: Strings.CitySearchAlertText.title,
             message: nil,
@@ -174,11 +177,11 @@ extension WeatherListPresenter {
             style: .default,
             handler: { _ in
                 guard let textField = alert.textFields?.first?.text else {
-                    self.showCitySelect()
+                    self.showCitySelect(weatherList: true)
                     return
                 }
                 if textField.isEmpty {
-                    self.showCitySelect()
+                    weatherList ? self.showCitySelect(weatherList: true) : self.showCitySelect(weatherList: false)
                 }
                 self.loadWeather(city: textField, coord: nil)
         }
@@ -191,9 +194,13 @@ extension WeatherListPresenter {
                 self.router.backToMainScreen()
         }
         ))
+        if weatherList {
+            alert.addAction(UIAlertAction(
+                title: Strings.CitySearchAlertText.cancel,
+                style: .default,
+                handler: nil
+            ))
+        }
         self.view?.present(alert, animated: true)
-    }
-    @objc func testTap(sender: UIButton!) {
-        print(2)
     }
 }

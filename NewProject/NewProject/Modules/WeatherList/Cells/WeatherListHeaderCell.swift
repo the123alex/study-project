@@ -9,8 +9,13 @@
 
 import SnapKit
 import UIKit
+protocol WeatherListHeaderCellDelegate: AnyObject {
+    func didTapMenuButton()
+}
 
 class WeatherListHeaderCell: UITableViewCell {
+    weak var delegate: WeatherListHeaderCellDelegate?
+
     let test = WeatherListViewController()
 
     let animationView: UIImageView = {
@@ -132,8 +137,12 @@ private extension WeatherListHeaderCell {
             tommorowDescriptionLabel,
             tommorowTemperatureValueLabel
         )
-        //print(changeCityButton)
-       // changeCityButton.addTarget(WeatherListPresenter.self, action: #selector(WeatherListPresenter.testTap(sender: )), for: .touchUpInside)
+
+        changeCityButton.addTarget(
+            self,
+            action: #selector(self.buttonAction(sender:)),
+            for: .touchUpInside
+        )
 
         backgroundColor = .white
         selectionStyle = .none
@@ -146,8 +155,11 @@ private extension WeatherListHeaderCell {
         }
         animationView.snp.makeConstraints { make in
             make.height.width.equalTo(50)
+            make.width.equalTo(50).priority(750)
+
+            make.trailing.lessThanOrEqualTo(temperatureValueLabel.snp.leading).inset(-15)
             make.leading.equalToSuperview().inset(15)
-            make.centerY.equalTo(tommorowDescriptionLabel.snp.centerY)
+            make.centerY.equalTo(temperatureValueLabel.snp.centerY)
         }
 
         currentCityName.snp.makeConstraints { make in
@@ -190,5 +202,6 @@ private extension WeatherListHeaderCell {
     }
 
     @objc func buttonAction(sender: UIButton) {
+        delegate?.didTapMenuButton()
     }
 }

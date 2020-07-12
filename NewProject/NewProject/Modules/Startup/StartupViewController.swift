@@ -26,7 +26,7 @@ class StartupViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         showWeather.layer.cornerRadius = 20
         aboutButton.layer.cornerRadius = 20
-        sunView.layer.cornerRadius = 45
+        sunView.layer.cornerRadius = 40
 
         presenter.viewDidLoad()
     }

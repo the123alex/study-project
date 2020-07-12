@@ -17,6 +17,7 @@ class WeatherListViewController: UIViewController {
             tableView.reloadData()
         }
     }
+
     var presenter: WeatherListPresenter!
 
     override func viewDidLoad() {
@@ -59,12 +60,24 @@ extension WeatherListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        tableView.dequeueReusableCell(withModel: cellModels[indexPath.row], for: indexPath)
+
+        let cell = tableView.dequeueReusableCell(withModel: cellModels[indexPath.row], for: indexPath)
+
+        if let headerCell = cell as? WeatherListHeaderCell {
+            headerCell.delegate = self
+        }
+        return cell
     }
 }
 
 extension WeatherListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+extension WeatherListViewController: WeatherListHeaderCellDelegate {
+    func didTapMenuButton() {
+        presenter.showCitySelect(weatherList: true)
     }
 }

@@ -38,7 +38,7 @@ enum Strings {
     }
     enum GeoAccess {
         static let title = "Нет доступа"
-        static let message = "Необходимо подтвердить"
+        static let message = "Необходимо предоставить доступ к локации."
         static let goToSettings = "Перейти"
         static let cancel = "Отмена"
     }
@@ -67,26 +67,36 @@ enum Strings {
     }
 
    enum WeekDaysByNumber: Int {
-        case sunday = 1
-        case monday = 2
-        case tuesday = 3
-        case wednesday = 4
-        case thursday = 5
-        case friday = 6
-        case saturday = 7
+    case sunday = 1
+    case monday = 2
+    case tuesday = 3
+    case wednesday = 4
+    case thursday = 5
+    case friday = 6
+    case saturday = 7
 
-        case unknown = 0
+    case unknown = 0
+
+    var name: String {
+        switch self {
+        case .monday:
+            return "Понедельник"
+        case .tuesday:
+            return "Вторник"
+        case .wednesday:
+            return "Среда"
+        case .thursday:
+            return "Четверг"
+        case .friday:
+            return "Пятница"
+        case .saturday:
+            return "Суббота"
+        case .sunday:
+            return "Воскресенье"
+
+        default:
+            return ""
+        }
     }
-
-    enum WeekdayByName {
-        static let sunday = "Воскресенье"
-        static let monday = "Понедельник"
-        static let tuesday = "Вторник"
-        static let wednesday = "Среда"
-        static let thursday = "Четверг"
-        static let friday = "Пятница"
-        static let saturday = "Суббота"
-
-        static let unknown = ""
     }
 }

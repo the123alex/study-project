@@ -38,6 +38,8 @@
 		C79789F32433E841006525F8 /* WeatherListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C79789F12433E841006525F8 /* WeatherListCell.xib */; };
 		C7B04068249A6A4600C93AFB /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B04067249A6A4600C93AFB /* LocationService.swift */; };
 		C7B0406B249DF71300C93AFB /* SettingsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B0406A249DF71300C93AFB /* SettingsStorage.swift */; };
+		C7B0406F24A5045900C93AFB /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B0406E24A5045900C93AFB /* SnapshotHelper.swift */; };
+		C7B0407124A5049C00C93AFB /* SnapshotsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B0407024A5049C00C93AFB /* SnapshotsTests.swift */; };
 		C7BB0BFC2447181F007B6EDB /* PTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BB0BFB2447181F007B6EDB /* PTableViewCellModel.swift */; };
 		C7BB0C01244719F9007B6EDB /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BB0BFE244719F9007B6EDB /* UIView+Extensions.swift */; };
 		C7BB0C02244719F9007B6EDB /* DateFormater+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BB0BFF244719F9007B6EDB /* DateFormater+Extensions.swift */; };
@@ -87,7 +89,7 @@
 		C707B42A24818BFC00DFFEB9 /* WeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPI.swift; sourceTree = "<group>"; };
 		C707B42D24818D7000DFFEB9 /* BaseResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponseDTO.swift; sourceTree = "<group>"; };
 		C707B42F24818F7F00DFFEB9 /* WeatherResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherResponseDTO.swift; sourceTree = "<group>"; };
-		C7243DCE241D39F500AE6B83 /* NewProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7243DCE241D39F500AE6B83 /* WTForecast?.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WTForecast?.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7243DD1241D39F500AE6B83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7243DD5241D39F500AE6B83 /* StartupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupViewController.swift; sourceTree = "<group>"; };
 		C7243DD8241D39F500AE6B83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -112,7 +114,8 @@
 		C79789F12433E841006525F8 /* WeatherListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherListCell.xib; sourceTree = "<group>"; };
 		C7B04067249A6A4600C93AFB /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		C7B0406A249DF71300C93AFB /* SettingsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStorage.swift; sourceTree = "<group>"; };
-		C7B0406C249FDF9500C93AFB /* Affect.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Affect.otf; sourceTree = "<group>"; };
+		C7B0406E24A5045900C93AFB /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
+		C7B0407024A5049C00C93AFB /* SnapshotsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotsTests.swift; sourceTree = "<group>"; };
 		C7BB0BFB2447181F007B6EDB /* PTableViewCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PTableViewCellModel.swift; sourceTree = "<group>"; };
 		C7BB0BFE244719F9007B6EDB /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		C7BB0BFF244719F9007B6EDB /* DateFormater+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormater+Extensions.swift"; sourceTree = "<group>"; };
@@ -229,7 +232,7 @@
 		C7243DCF241D39F500AE6B83 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C7243DCE241D39F500AE6B83 /* NewProject.app */,
+				C7243DCE241D39F500AE6B83 /* WTForecast?.app */,
 				C7243DE4241D39F600AE6B83 /* NewProjectTests.xctest */,
 				C7243DEF241D39F600AE6B83 /* NewProjectUITests.xctest */,
 			);
@@ -240,7 +243,6 @@
 			isa = PBXGroup;
 			children = (
 				C7243DD1241D39F500AE6B83 /* AppDelegate.swift */,
-				C7B0406D249FDFD300C93AFB /* Fonts */,
 				C7B04066249A6A1500C93AFB /* Services */,
 				C7E55B0E249183DA0062BCE6 /* Entities */,
 				C7243DD7241D39F500AE6B83 /* Main.storyboard */,
@@ -265,6 +267,8 @@
 		C7243DF2241D39F600AE6B83 /* NewProjectUITests */ = {
 			isa = PBXGroup;
 			children = (
+				C7B0406E24A5045900C93AFB /* SnapshotHelper.swift */,
+				C7B0407024A5049C00C93AFB /* SnapshotsTests.swift */,
 				C7243DF5241D39F600AE6B83 /* Info.plist */,
 			);
 			path = NewProjectUITests;
@@ -358,14 +362,6 @@
 			path = SettingsStorage;
 			sourceTree = "<group>";
 		};
-		C7B0406D249FDFD300C93AFB /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				C7B0406C249FDF9500C93AFB /* Affect.otf */,
-			);
-			path = Fonts;
-			sourceTree = "<group>";
-		};
 		C7BB0BF9244717B9007B6EDB /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -449,7 +445,7 @@
 			);
 			name = NewProject;
 			productName = NewProject;
-			productReference = C7243DCE241D39F500AE6B83 /* NewProject.app */;
+			productReference = C7243DCE241D39F500AE6B83 /* WTForecast?.app */;
 			productType = "com.apple.product-type.application";
 		};
 		C7243DE3241D39F600AE6B83 /* NewProjectTests */ = {
@@ -510,6 +506,7 @@
 					};
 					C7243DEE241D39F600AE6B83 = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1150;
 						TestTargetID = C7243DCD241D39F500AE6B83;
 					};
 				};
@@ -739,6 +736,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7B0406F24A5045900C93AFB /* SnapshotHelper.swift in Sources */,
+				C7B0407124A5049C00C93AFB /* SnapshotsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -903,8 +902,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Aleksey-Mikhlev.NewProject";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.aleksey-mikhlev.wtf";
+				PRODUCT_NAME = "WTForecast?";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -922,8 +921,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Aleksey-Mikhlev.NewProject";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.aleksey-mikhlev.wtf";
+				PRODUCT_NAME = "WTForecast?";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -980,6 +979,7 @@
 			baseConfigurationReference = FF1EF0A1908F2C5A19428595 /* Pods-NewProject-NewProjectUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NBXWNXCUWE;
 				INFOPLIST_FILE = NewProjectUITests/Info.plist;
@@ -990,6 +990,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Aleksey-Mikhlev.NewProjectUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = NewProject;
@@ -1001,6 +1002,7 @@
 			baseConfigurationReference = 9CCE40EB6DAEA39A79D54D0A /* Pods-NewProject-NewProjectUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NBXWNXCUWE;
 				INFOPLIST_FILE = NewProjectUITests/Info.plist;
