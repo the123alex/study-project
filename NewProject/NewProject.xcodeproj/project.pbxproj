@@ -89,7 +89,7 @@
 		C707B42A24818BFC00DFFEB9 /* WeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPI.swift; sourceTree = "<group>"; };
 		C707B42D24818D7000DFFEB9 /* BaseResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponseDTO.swift; sourceTree = "<group>"; };
 		C707B42F24818F7F00DFFEB9 /* WeatherResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherResponseDTO.swift; sourceTree = "<group>"; };
-		C7243DCE241D39F500AE6B83 /* WTForecast?.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WTForecast?.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7243DCE241D39F500AE6B83 /* WT Forecast?.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WT Forecast?.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7243DD1241D39F500AE6B83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7243DD5241D39F500AE6B83 /* StartupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupViewController.swift; sourceTree = "<group>"; };
 		C7243DD8241D39F500AE6B83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -232,7 +232,7 @@
 		C7243DCF241D39F500AE6B83 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C7243DCE241D39F500AE6B83 /* WTForecast?.app */,
+				C7243DCE241D39F500AE6B83 /* WT Forecast?.app */,
 				C7243DE4241D39F600AE6B83 /* NewProjectTests.xctest */,
 				C7243DEF241D39F600AE6B83 /* NewProjectUITests.xctest */,
 			);
@@ -445,7 +445,7 @@
 			);
 			name = NewProject;
 			productName = NewProject;
-			productReference = C7243DCE241D39F500AE6B83 /* WTForecast?.app */;
+			productReference = C7243DCE241D39F500AE6B83 /* WT Forecast?.app */;
 			productType = "com.apple.product-type.application";
 		};
 		C7243DE3241D39F600AE6B83 /* NewProjectTests */ = {
@@ -903,7 +903,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.aleksey-mikhlev.wtf";
-				PRODUCT_NAME = "WTForecast?";
+				PRODUCT_NAME = "WT Forecast?";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -922,7 +922,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.aleksey-mikhlev.wtf";
-				PRODUCT_NAME = "WTForecast?";
+				PRODUCT_NAME = "WT Forecast?";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -78,8 +78,6 @@ extension WeatherListPresenter {
                 default:
                     return
                 }
-                print(result)
-                print(error.localizedDescription)
             }
         }
     }
@@ -94,7 +92,6 @@ extension WeatherListPresenter {
         self.weatherArray.removeAll()
 
         for element in responseForDecode.list {
-           // let testDate = element.dateText.toDate()?.convertTo()
             guard let testDate = element.dateText.toDate()?.convertTo() else {
                 continue
             }
@@ -128,14 +125,12 @@ extension WeatherListPresenter {
             }
         }
         if self.weatherArray.count == 1 {
-            print(weatherArray)
             self.finalTodayWeather = weatherArray[0]
             self.finalTodayWeather?.temperatureTommorow = tomorrowTempDay
             self.finalTodayWeather?.temperatureToday = tomorrowTempMidnight
             self.finalTodayWeather?.date = tomorrowDateText
             self.finalTodayWeather?.tomorrowWeatherDescription = tomorrowWeatherDescription
         } else {
-            print(weatherArray)
             self.finalTodayWeather = weatherArray[1]
             self.finalTodayWeather?.tomorrowWeatherDescription = tomorrowWeatherDescription
             self.finalTodayWeather?.temperatureTommorow = tomorrowTempDay
