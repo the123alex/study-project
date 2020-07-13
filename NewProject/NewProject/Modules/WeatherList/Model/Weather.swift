@@ -7,9 +7,14 @@
 //
 
 import Foundation
+import SwiftDate
 
 struct Weather {
-    let temperature: Float
-    let date: Date
-    let precipitationChance: Float
+    var temperatureToday: Double
+    var temperatureTommorow: Double
+    let weatherDescriptionMain: String
+    var weatherDescriptionText: String
+    var tomorrowWeatherDescription: String
+    var date: String
+    let currentCityName: String
 }

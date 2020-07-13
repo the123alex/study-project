@@ -5,64 +5,108 @@
 //  Created by Aleksey on 08.04.2020.
 //  Copyright © 2020 Aleksey Mikhlev. All rights reserved.
 //
+//swiftlint:disable attributes
+
 import SnapKit
 import UIKit
+protocol WeatherListHeaderCellDelegate: AnyObject {
+    func didTapMenuButton()
+}
 
 class WeatherListHeaderCell: UITableViewCell {
+    weak var delegate: WeatherListHeaderCellDelegate?
+
+    let test = WeatherListViewController()
+
+    let animationView: UIImageView = {
+        let imageView = UIImageView()
+        let image = UIImage(systemName: Strings.SystemIconName.arrowDown)
+
+        imageView.image = image
+        imageView.alpha = 0
+        UIView.animate(
+            withDuration: 1.25,
+            delay: 0,
+            options: [],
+            animations: {
+                imageView.alpha = 1
+            }, completion: { _ in
+                UIView.animate(
+                    withDuration: 1,
+                    delay: 0,
+                    animations: {
+                        imageView.alpha = 0
+                    }
+                )
+            }
+        )
+
+        return imageView
+    }()
+
+    let helpView: UIView = {
+        let view = UIView()
+
+        return view
+    }()
+
+    let currentCityName: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 45, weight: .light)
+        label.textColor = .darkGray
+        label.adjustsFontSizeToFitWidth = true
+        label.baselineAdjustment = .alignBaselines
+
+        return label
+    }()
+
+    let weatherDescriptionLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 20, weight: .thin)
+        label.textColor = .gray
+        label.adjustsFontSizeToFitWidth = true
+        label.baselineAdjustment = .alignBaselines
+
+        return label
+    }()
 
     let iconImageView = UIImageView()
 
+    var changeCityButton: UIButton = {
+        let button = UIButton()
+        button.tintColor = .black
+
+        let image = UIImage(systemName: Strings.SystemIconName.lineHorizontalThree)
+        button.setBackgroundImage(image, for: .normal)
+
+        return button
+    }()
+
     let temperatureValueLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
-        label.textColor = .gray
-
-        return label
-    }()
-
-    let dateLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 18, weight: .black)
-        label.textColor = .gray
-        label.textAlignment = .center
-        return label
-    }()
-
-    let weatherLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 30, weight: .black)
+        label.font = UIFont.systemFont(ofSize: 50, weight: .regular)
         label.textColor = .darkGray
-        label.textAlignment = .center
-        label.numberOfLines = 0
+
         return label
     }()
 
-    let precipitationLabel: UILabel = {
+    let tommorowDescriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 18, weight: .black)
+        label.font = UIFont.systemFont(ofSize: 24, weight: .thin)
         label.textColor = .gray
-        label.numberOfLines = 0
         label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        label.baselineAdjustment = .alignBaselines
 
         return label
     }()
 
-    let imageTempStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.distribution = .fill
-        stackView.alignment = .center
-        stackView.axis = .vertical
-
-        return stackView
-    }()
-
-    let labelsStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.distribution = .equalCentering
-        stackView.alignment = .center
-        stackView.axis = .vertical
-        stackView.spacing = 5
-        return stackView
+    let tommorowTemperatureValueLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 24, weight: .thin)
+        label.textColor = .gray
+        label.textAlignment = .center
+        return label
     }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -80,35 +124,84 @@ class WeatherListHeaderCell: UITableViewCell {
 
 private extension WeatherListHeaderCell {
     func setupViews() {
-        contentView.addSubviews(
-            imageTempStackView,
-            labelsStackView
-        )
-        imageTempStackView.addArrangedSubview(iconImageView)
-        imageTempStackView.addArrangedSubview(temperatureValueLabel)
 
-        labelsStackView.addArrangedSubview(dateLabel)
-        labelsStackView.addArrangedSubview(weatherLabel)
-        labelsStackView.addArrangedSubview(precipitationLabel)
+        contentView.addSubview(helpView)
+
+        helpView.addSubviews(
+            animationView,
+            currentCityName,
+            changeCityButton,
+            weatherDescriptionLabel,
+            iconImageView,
+            temperatureValueLabel,
+            tommorowDescriptionLabel,
+            tommorowTemperatureValueLabel
+        )
+
+        changeCityButton.addTarget(
+            self,
+            action: #selector(self.buttonAction(sender:)),
+            for: .touchUpInside
+        )
 
         backgroundColor = .white
         selectionStyle = .none
+        separatorInset = .zero
     }
 
     func makeConstraints() {
-        imageTempStackView.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview()
-            make.leading.equalToSuperview().inset(10)
+        helpView.snp.makeConstraints { make in
+            make.height.width.equalToSuperview()
+        }
+        animationView.snp.makeConstraints { make in
+            make.height.width.equalTo(50)
+            make.width.equalTo(50).priority(750)
+
+            make.trailing.lessThanOrEqualTo(temperatureValueLabel.snp.leading).inset(-15)
+            make.leading.equalToSuperview().inset(15)
+            make.centerY.equalTo(temperatureValueLabel.snp.centerY)
+        }
+
+        currentCityName.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(15)
+            make.centerX.equalToSuperview()
+            make.trailing.lessThanOrEqualTo(changeCityButton.snp.leading).inset(-10)
+            make.bottom.equalTo(weatherDescriptionLabel.snp.top).inset(-3)
+        }
+        changeCityButton.snp.makeConstraints { make in
+            make.height.width.equalTo(32)
+            make.top.trailing.equalToSuperview().inset(25)
+        }
+
+        weatherDescriptionLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(iconImageView.snp.top).inset(-10)
         }
 
         iconImageView.snp.makeConstraints { make in
-            make.width.height.equalTo(100)
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(temperatureValueLabel.snp.top).inset(-10)
+            make.width.lessThanOrEqualToSuperview()
         }
 
-        labelsStackView.snp.makeConstraints { make in
-            make.leading.equalTo(imageTempStackView.snp.trailing).offset(30)
-            make.centerY.equalTo(imageTempStackView.snp.centerY)
-            make.trailing.equalToSuperview().inset(10)
+        temperatureValueLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(tommorowDescriptionLabel.snp.top).inset(-40)
         }
+
+        tommorowDescriptionLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(tommorowTemperatureValueLabel.snp.top).inset(-5)
+            make.leading.trailing.greaterThanOrEqualToSuperview().inset(10)
+        }
+
+        tommorowTemperatureValueLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().inset(20)
+        }
+    }
+
+    @objc func buttonAction(sender: UIButton) {
+        delegate?.didTapMenuButton()
     }
 }

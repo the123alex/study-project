@@ -13,15 +13,19 @@ import Foundation
     private weak var view: StartupViewController?
     private let router: StartupRouter
     private let weatherAPI: WeatherAPIProtocol
+    private let locationService: LocationService
+    private var isRequestLocationNeeded: Bool = false
 
     init(
         view: StartupViewController,
         router: StartupRouter,
-        weatherAPI: WeatherAPIProtocol
+        weatherAPI: WeatherAPIProtocol,
+        locationService: LocationService
     ) {
         self.view = view
         self.router = router
         self.weatherAPI = weatherAPI
+        self.locationService = locationService
     }
 
     func viewDidLoad() {
@@ -33,27 +37,50 @@ import Foundation
 
         view?.bindData(with: startupViewModel
         )
+
+        locationService.delegate = self
     }
 
     func didTapWeatherListButton() {
-        weatherAPI.loadStatistic(by: "Moscow") { [weak self] result in
-                   switch result {
-                   case .success(let responseDTO):
-                       let covidViewModel = StartupViewModel(
-                        title: "Всего случаев: \(responseDTO.cod)",
-                        description: "Вылечилось: ",
-                        firstButtonTitle: Strings.Startup.firstButtonTitle,
-                        secondButtonTitle: Strings.Startup.secondButonTitle
-                       )
-                       print(result)
+        router.showCitySelect()
+        //router.showWeatherList(cityName: "moscow", coordinates: nil)
+    }
 
-                       self?.view?.bindData(with: covidViewModel)
-                   case .failure(let error):
-                    print(result)
-
-                    print(error.localizedDescription)
-                   }
+    func didTapLocationButton() {
+        switch locationService.authorizationStatus {
+        case .authorizedWhenInUse, .authorizedAlways:
+            requestLocation()
+        case .notDetermined:
+            locationService.requestAccess()
+            isRequestLocationNeeded = true
+        case .denied, .restricted:
+            router.showLocationDisabledAlert()
+            isRequestLocationNeeded = true
+        @unknown default:
+            break
         }
-      //  router.showWeatherList()
     }
  }
+
+extension StartupPresenter: LocationServiceDelegate {
+    func didChangeAuthorizationStatus(hasAccess: Bool) {
+        guard isRequestLocationNeeded, hasAccess else {
+            return
+        }
+        isRequestLocationNeeded = false
+        requestLocation()
+    }
+}
+
+private extension StartupPresenter {
+    func requestLocation() {
+        locationService.requestLocation { [router] result in
+            switch result {
+            case .success(let coordinates):
+                router.showWeatherList(cityName: nil, coordinates: coordinates)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+}

@@ -9,22 +9,22 @@
 import Foundation
 
 protocol WeatherAPIProtocol {
-    func loadStatistic(
-        by cityName: String,
+    func loadWeather(
+        byCityName: String?,
+        byCoordination: LocationCoordinate?,
         completion: @escaping (
-        Result<BaseResponseDTO<WeatherStatisticDTO>,
-        NetworkError>
-        ) -> Void
+        Result<WeatherResponseDTO, NetworkError>) -> Void
     )
 }
 
 class WeatherAPIMock: WeatherAPIProtocol {
-    func loadStatistic(
-        by cityName: String,
+    func loadWeather(
+        byCityName: String?,
+        byCoordination: LocationCoordinate?,
         completion: @escaping (
-            Result<BaseResponseDTO<WeatherStatisticDTO>, NetworkError>
+            Result<WeatherResponseDTO, NetworkError>
             ) -> Void
-    ) {}
+        ) {}
 }
 
 class WeatherAPI: WeatherAPIProtocol {
@@ -39,25 +39,39 @@ class WeatherAPI: WeatherAPIProtocol {
         self.requestBuilder = requestBuilder
     }
 
-    func loadStatistic(
-        by cityName: String,
+    func loadWeather(
+        byCityName: String?,
+        byCoordination: LocationCoordinate?,
         completion: @escaping (
-        Result<BaseResponseDTO<WeatherStatisticDTO>, NetworkError>
-        ) -> Void
-    ) {
+            Result<WeatherResponseDTO, NetworkError>
+            ) -> Void
+        ) {
+        var params = [String: [String]]()
+        params = [
+        "units": ["metric"],
+        "lang": ["ru"],
+        "appid": ["0e09e2d025867d8ce34fc90927b5c5a8"]
+        ]
+
+        if byCityName != nil {
+            params.updateValue([byCityName ?? ""], forKey: "q")
+        } else if byCoordination != nil {
+            //swiftlint:disable force_unwrapping
+            params.updateValue([(String(describing: byCoordination!.lat))], forKey: "lat")
+            params.updateValue([(String(describing: byCoordination!.lon))], forKey: "lon")
+        }
+
         let requestPrototype = NetworkRequestPrototype(
             method: .get,
             endpoint: .weather,
             path: "/data/2.5/forecast",
             headers: [:],
-            queryParams: [
-                "q": [cityName],
-                "appid": ["0e09e2d025867d8ce34fc90927b5c5a8"]
-            ]
+            queryParams: params
         )
         network.performRequest(
             requestPrototype,
             requestBuilder: requestBuilder,
-            completion: completion)
+            completion: completion
+        )
     }
 }

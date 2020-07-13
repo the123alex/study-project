@@ -18,13 +18,15 @@ class StartupViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var showWeather: UIButton!
     @IBOutlet weak var aboutButton: UIButton!
-    @IBOutlet weak var blurView: UIView!
+    @IBOutlet weak var sunView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        navigationController?.navigationBar.isHidden = true
         showWeather.layer.cornerRadius = 20
         aboutButton.layer.cornerRadius = 20
+        sunView.layer.cornerRadius = 40
 
         presenter.viewDidLoad()
     }
@@ -35,6 +37,10 @@ class StartupViewController: UIViewController {
 
     @IBAction private func didTapWeatherListButton(_ sender: UIButton) {
         presenter.didTapWeatherListButton()
+    }
+
+    @IBAction private func didTapLocationButton(_ sender: UIButton) {
+        presenter.didTapLocationButton()
     }
 }
 

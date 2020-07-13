@@ -17,12 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-
-        let navigationController = StartupAssembly().create()
-        window?.rootViewController = navigationController
-        window?.makeKeyAndVisible()
-
-        return true
+            let navigationController = StartupAssembly().create()
+            window?.rootViewController = navigationController
+            window?.makeKeyAndVisible()
+            return true
     }
 
     // MARK: UISceneSession Lifecycle

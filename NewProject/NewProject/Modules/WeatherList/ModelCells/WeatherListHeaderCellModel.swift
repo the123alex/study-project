@@ -6,59 +6,72 @@
 //  Copyright © 2020 Aleksey Mikhlev. All rights reserved.
 //
 
+import SwiftDate
 import UIKit
 
 struct WeatherListHeaderCellModel: PTableViewCellModel {
     let weatherImage: UIImage
-    let dateText: String
     let temperatureValueText: String
     let weatherDescriptionText: String
-    let precipitationText: String
+    let currentCityNameText: String
+    let tommorowWordText: String
+    let tommorowTemperatureValueText: String
+    let time: String
+    var weatherTom: String = ""
 
     init(weather: Weather) {
-        switch weather.temperature {
-        case -30 ... -20:
-            weatherImage = #imageLiteral(resourceName: "veryCold")
-            weatherDescriptionText = Strings.WeatherList.veryCold
-            precipitationText = Strings.WeatherList.notRain
-        case -19 ... -10:
-            weatherImage = #imageLiteral(resourceName: "cold")
-            weatherDescriptionText = Strings.WeatherList.cold
-            precipitationText = Strings.WeatherList.maybeRain
-        case -9 ... 0:
-            weatherImage = #imageLiteral(resourceName: "lessCold")
-            weatherDescriptionText = Strings.WeatherList.lessCold
-            precipitationText = Strings.WeatherList.willRain
-        case 1 ... 15:
-            weatherImage = #imageLiteral(resourceName: "lessWarm")
-            weatherDescriptionText = Strings.WeatherList.lessWarm
-            precipitationText = Strings.WeatherList.notRain
-        case 16 ... 25:
-            weatherImage = #imageLiteral(resourceName: "warm")
-            weatherDescriptionText = Strings.WeatherList.warm
-            precipitationText = Strings.WeatherList.willRain
-        case 26 ... 40:
-            weatherImage = #imageLiteral(resourceName: "veryWarm")
-            weatherDescriptionText = Strings.WeatherList.veryWarm
-            precipitationText = Strings.WeatherList.maybeRain
+        switch weather.weatherDescriptionMain {
+        case Strings.WeatherListResponse.clear.rawValue:
+            weatherImage = #imageLiteral(resourceName: "Clear w 275")
+
+        case Strings.WeatherListResponse.clouds.rawValue:
+            weatherImage = #imageLiteral(resourceName: "Clouds w 275_1")
+
+        case Strings.WeatherListResponse.rain.rawValue:
+            weatherImage = #imageLiteral(resourceName: "rain")
+
+        case Strings.WeatherListResponse.drizzle.rawValue:
+            weatherImage = #imageLiteral(resourceName: "drizzle")
+
+        case Strings.WeatherListResponse.snow.rawValue:
+            weatherImage = #imageLiteral(resourceName: "snow")
+
+        case Strings.WeatherListResponse.thunderstorm.rawValue:
+            weatherImage = #imageLiteral(resourceName: "thunderstorm")
+
+        case Strings.WeatherListResponse.atmosphere.rawValue:
+            weatherImage = #imageLiteral(resourceName: "atmosphere")
+
         default:
-            weatherImage = #imageLiteral(resourceName: "default")
-            weatherDescriptionText = Strings.WeatherList.warm
-            precipitationText = Strings.WeatherList.willRain
+            weatherImage = #imageLiteral(resourceName: "Clear w 275")
         }
-        if weather.temperature.isLess(than: 0) {
-            temperatureValueText = String(format: "%.0f\u{2103}", weather.temperature)
+
+        if weather.temperatureToday.isLess(than: 0) {
+            temperatureValueText = String(format: "%.0f\u{2103}", weather.temperatureToday)
         } else {
-            temperatureValueText = String(format: "+%.0f\u{2103}", weather.temperature)
+            temperatureValueText = String(format: "+%.0f\u{2103}", weather.temperatureToday)
         }
-        dateText = weather.date.dayMonthString
+
+        if weather.temperatureTommorow.isLess(than: 0) {
+            tommorowTemperatureValueText = String(format: "%.0f\u{2103}", weather.temperatureTommorow)
+        } else {
+            tommorowTemperatureValueText = String(format: "+%.0f\u{2103}", weather.temperatureTommorow)
+        }
+
+        currentCityNameText = weather.currentCityName
+        tommorowWordText = Strings.WeatherListDescription.tomorrowWord
+        time = weather.date.toDate()?.toFormat("на HH:mm ") ?? ""
+
+        weatherTom = weather.tomorrowWeatherDescription.lowercased()
+        weatherDescriptionText = weather.weatherDescriptionText.lowercased()
     }
 
     func configure(cell: WeatherListHeaderCell) {
-        cell.dateLabel.text = dateText
+        cell.currentCityName.text = currentCityNameText
         cell.iconImageView.image = weatherImage
-        cell.precipitationLabel.text = precipitationText
         cell.temperatureValueLabel.text = temperatureValueText
-        cell.weatherLabel.text = weatherDescriptionText
+        cell.tommorowDescriptionLabel.text = tommorowWordText + " " + weatherTom.lowercased()
+        cell.tommorowTemperatureValueLabel.text = tommorowTemperatureValueText
+        cell.weatherDescriptionLabel.text = time + weatherDescriptionText
     }
 }

@@ -55,7 +55,7 @@ class NetworkProvider: Network {
             resultQueue.async {
                 switch httpResponse.statusCode {
                 case 200..<300:
-                    print(data.prettyPrintedJSONString)
+                    //print(data.prettyPrintedJSONString)
                     completion(.success(NetworkResult(data: data, response: httpResponse)))
                 default:
                     completion(.failure(.httpFailure(httpResponse.statusCode)))

@@ -10,9 +10,17 @@ import UIKit
 
  class WeatherListAssembly {
     let navigationController: UINavigationController
+    let cityName: String?
+    let coordinates: LocationCoordinate?
 
-    init(navigationController: UINavigationController) {
+    init(
+        navigationController: UINavigationController,
+        cityName: String?,
+        coordinates: LocationCoordinate?
+    ) {
         self.navigationController = navigationController
+        self.cityName = cityName
+        self.coordinates = coordinates
     }
 
     func create() -> WeatherListViewController {
@@ -24,9 +32,15 @@ import UIKit
         }
 
         let router = WeatherListRouter(navigationController: navigationController)
-        let presenter = WeatherListPresenter(view: viewController, router: router)
+        let presenter = WeatherListPresenter(
+            view: viewController,
+            router: router,
+            weatherAPI: WeatherAPI(network: NetworkProvider()),
+            cityName: cityName,
+            coordinates: coordinates
+            //settingsStorage: UserDefaults.standard
+        )
         viewController.presenter = presenter
-
         return viewController
     }
  }

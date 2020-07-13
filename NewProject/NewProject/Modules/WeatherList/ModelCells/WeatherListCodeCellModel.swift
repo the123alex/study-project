@@ -5,60 +5,51 @@
 //  Created by Aleksey on 15.04.2020.
 //  Copyright © 2020 Aleksey Mikhlev. All rights reserved.
 //
+//swiftlint:disable explicit_init
 
+import SwiftDate
 import UIKit
 
 struct WeatherListCodeCellModel: PTableViewCellModel {
 
-    let weatherImage: UIImage
-    let dateText: String
+    var dateText: String = ""
     let temperatureValueText: String
-    let precipitationChanceDescriptionText: String
-    let precipitationChanceValueText: String
+    let weatherDescriptionText: String
 
     init(weather: Weather) {
-        switch weather.temperature {
-        case -30 ... -20:
-            weatherImage = #imageLiteral(resourceName: "veryCold")
-        case -19 ... -10:
-            weatherImage = #imageLiteral(resourceName: "cold")
-        case -9 ... 0:
-            weatherImage = #imageLiteral(resourceName: "lessCold")
-        case 1 ... 15:
-            weatherImage = #imageLiteral(resourceName: "lessWarm")
-        case 16 ... 25:
-            weatherImage = #imageLiteral(resourceName: "warm")
-        case 26 ... 40:
-            weatherImage = #imageLiteral(resourceName: "veryWarm")
-        default:
-            weatherImage = #imageLiteral(resourceName: "default")
-        }
+        weatherDescriptionText = weather.weatherDescriptionText
 
-        if weather.temperature <= 0 {
+        if weather.temperatureToday <= 0 {
             temperatureValueText = String(
                 format: "%.0f\u{2103}",
-                weather.temperature
+                weather.temperatureToday
             )
         } else {
             temperatureValueText = String(
                 format: "+%.0f\u{2103}",
-                weather.temperature
+                weather.temperatureToday
             )
         }
-        dateText = weather.date.dayMonthStringNext
-        precipitationChanceDescriptionText = Strings.WeatherList.precititation
 
-        precipitationChanceValueText = String(
-            format: "%.0f",
-            weather.precipitationChance
-        ) + "%"
+        let getWeekday = weather.date.toDate()?.weekday
+        let result = testWeekDay(getWeekday)
+        dateText = result
     }
 
     func configure(cell: WeatherListCodeCell) {
         cell.dateLabel.text = dateText
-        cell.iconImageView.image = weatherImage
         cell.temperatureValueLabel.text = temperatureValueText
-        cell.precipitationDescriptionLabel.text = precipitationChanceDescriptionText
-        cell.precipitationValueLabel.text = precipitationChanceValueText
+        cell.weatherDescriptionLabel.text = weatherDescriptionText
+    }
+
+    func testWeekDay(_ day: Int?) -> String {
+        guard
+            let testDay = day,
+            let testDayTest = Strings.WeekDaysByNumber.init(rawValue: testDay)
+        else {
+            return ""
+        }
+
+        return testDayTest.name
     }
 }

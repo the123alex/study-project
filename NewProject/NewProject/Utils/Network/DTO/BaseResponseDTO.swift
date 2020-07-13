@@ -17,4 +17,6 @@ struct BaseResponseDTO<T: Decodable>: Decodable {
 
 struct City: Decodable {
     let name: String
+    let sunrise: Int
+    let sunset: Int
 }
