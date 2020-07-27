@@ -16,8 +16,6 @@ protocol WeatherListHeaderCellDelegate: AnyObject {
 class WeatherListHeaderCell: UITableViewCell {
     weak var delegate: WeatherListHeaderCellDelegate?
 
-    let test = WeatherListViewController()
-
     let animationView: UIImageView = {
         let imageView = UIImageView()
         let image = UIImage(systemName: Strings.SystemIconName.arrowDown)
