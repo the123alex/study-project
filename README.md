@@ -1,2 +1,2 @@
 # study-project
-Weather by autolocation or city
+Weather by current location or selected city
